@@ -1,18 +1,18 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
+const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
+
 
 module.exports = {
   mode: 'development',
   context: __dirname + "/src/modules",
   entry: {
-    create_demo_page: './create_demo_page.js',
-    chart: './chart.js'
+    bundle: ['./index.js', './tree.js']
   },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
-  },
+
   module: {
     rules: [
       {
@@ -26,25 +26,41 @@ module.exports = {
           'css-loader'
         ]
       },
+      {
+        loader: 'babel-loader',
+        options: {
+          presets: ["@babel/env"]
+        },
+      }
       /*{
         test: /\.(jpg|png|svg)$/,
         loader: 'file',
-        include: './images'
+        include: './prod.bundle'
       }*/
     ]
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   devServer:
     {
-      contentBase: './dist',
-      hot:
-        true
-    }
-  ,
+      contentBase: './',
+      publicPath: '/build/',
+      watchContentBase: true,
+      hot: true
+    },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new MergeIntoSingleFilePlugin({
+      files: {
+        "prod.bundle.js": [
+          './src/modules/index.js',
+          './src/modules/tree.js',
+        ],
+      }
+    }),
   ],
-  resolveLoader: {
-    moduleExtensions: ["-loader"]
-  }
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, "build"), // string
+    publicPath: "/build/",
+  },
 };
