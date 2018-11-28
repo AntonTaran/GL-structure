@@ -1,30 +1,19 @@
+//import * as dataTree from '../data/test-tree-data';
 import * as dataTree from '../data/tree-data';
-import {persons} from '../data/tree-data';
+//import {persons} from '../data/tree-data';
 
-let margin = {
+// Const params
+const margin = {
   top: 40,
   right: 120,
   bottom: 20,
   left: 120
 };
 
-let width = 1000;
-let height = 1000;
-let tree = d3
-  .layout
-  .tree()
-  .size([height, width]);
+//const tableData = [dataTree.root];
+const tableData = dataTree.persons;
 
-let diagonal = d3.svg.diagonal()
-  .projection(function (d) {
-    return [d.x, d.y];
-  });
-
-let svg = d3.select('.chart-container').append('svg')
-  .attr('width', width + margin.right + margin.left)
-  .attr('height', height + margin.top + margin.bottom)
-  .append('g')
-  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+let root = combineChartData(tableData)[0];
 
 /*Combine tree data*/
 function combineChartData(persons) {
@@ -36,60 +25,104 @@ function combineChartData(persons) {
         element.children.push(element2);
       }
     }
-
     return element;
   });
 }
 
-function initTree() {
-  let root = combineChartData(dataTree.persons)[0];
+const width = 960 - margin.right - margin.left;
+const height = 1800 - margin.top - margin.bottom;
+const tree = d3.layout.tree().nodeSize([200, 70]);
 
-  update(root, null);
+const tileWidth = 200;
+const tileHeight = 70;
+const commonAxis = -tileWidth / 2;
+const avatar = {
+  width: 50,
+  height: 50,
+  margin: 5,
+};
+const textGroupMargin = 5;
+const toggleButton = {
+  width: 10,
+  height: 10,
+  margin: 5,
+};
+const textGroupPosition = commonAxis + avatar.width + avatar.margin + textGroupMargin;
+
+let diagonal = d3.svg.diagonal()
+  .projection(function (d) {
+    return [d.x + tileWidth / 2, d.y + tileHeight / 2];
+  });
+
+var zm;
+
+//let svg = d3.select('.chart-container').append('svg')
+//  .attr('width', width + margin.right + margin.left)
+//  .attr('height', height + margin.top + margin.bottom)
+//  .append('g')
+//  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+//  .style("height", "800px");
+
+var svg = d3.select(".chart-container").append("svg").attr("width", 1000).attr("height", 1000)
+  .call(zm = d3.behavior.zoom().scaleExtent([1, 3]).on("zoom", redraw)).append("g")
+  .attr("transform", "translate(" + 350 + "," + 20 + ")");
+
+root.x0 = 0;
+root.y0 = height / 2;
+
+function collapse(d) {
+  if (d.children) {
+    d._children = d.children;
+    d._children.forEach(collapse);
+    d.children = null;
+  }
 }
 
-initTree();
+root.children.forEach(collapse);
+//update(root);
 
-function update(element) {
-  let root = element;
-
-//  let root = combineChartData(dataTree.persons)[0];
-
-//  let {root, tree, diagonal, svg} = parameters;
+// Update the nodes…
+function updateNodes(nodes) {
   let index = 0;
-
-  // Compute the new tree layout.
-  let nodes = tree.nodes(root);
-  let links = tree.links(nodes);
-
-  let tileWidth = 200;
-  let tileHeight = 70;
-
-  const commonAxis = -tileWidth / 2;
-  const avatarWidth = 50;
-  const avatarHeight = 50;
-  const avatarMargin = 5;
-  const textGroupMargin = 5;
-  const toggleButtonWidth = 20;
-  const toggleButtonHeight = 20;
-
-  const textGroupPosition = commonAxis + avatarWidth + avatarMargin + textGroupMargin;
-
-  // Distance between nodes
-  nodes.forEach((d) => d.y = d.depth * 200);
-
-  // Declare the nodes…
   let node = svg
     .selectAll('g.node')
     .data(nodes, (d) => d.id || (d.id = ++index));
 
-  // Enter the nodes.
+  return node;
+}
+
+// Enter any new nodes at the parent's previous position.
+function nodeEnterAtParentsPosition(node) {
   let nodeEnter = node.enter()
     .append('g')
     .attr('class', 'node')
-    .attr('transform', (d) => 'translate(' + d.x + ',' + d.y + ')')
+    .attr('id', (element) => 'node-' + element.id)
+    .attr('transform', (element) => 'translate(' + element.x + ',' + element.y + ')')
     .on('click', setEventOnNode);
 
-  // Create member card
+  nodeEnter.append("rect")
+    .attr("width", rectW)
+    .attr("height", rectH)
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+    .style("fill", function (d) {
+      return d._children ? "lightsteelblue" : "#fff";
+    });
+
+  nodeEnter.append("text")
+    .attr("x", rectW / 2)
+    .attr("y", rectH / 2)
+    .attr("dy", ".35em")
+    .attr("text-anchor", "middle")
+    .text(function (d) {
+      return d.name;
+    });
+
+  return nodeEnter;
+}
+
+// Create person card
+function createPersonCard(nodeEnter) {
   nodeEnter.append('rect')
     .attr('x', commonAxis)
     .attr('y', 0)
@@ -97,113 +130,175 @@ function update(element) {
     .attr('height', tileHeight)
     .style('fill', '#444');
 
-  // Transition nodes to their new position.
-  var nodeUpdate = node.transition()
-    .duration(700)
-    .attr("transform", function(d) {
-      return "translate(" + root.x + "," + root.y + ")";
+//  let infoNode = nodeEnter.append('g')
+//    .attr('class', 'person-info')
+//    .attr('transform', function (d) {
+//      return 'translate(' + textGroupPosition + ',' + 0 + ')';
+//    });
+//
+//  infoNode.append('a')
+//    .attr("xlink:href", "http://en.wikipedia.org/wiki")
+//    .attr("target", "_blank")
+//    .append('text')
+//    .attr('x', 0)
+//    .attr('y', 12)
+//    .attr('dy', '.35em')
+//    .text(function (d) {
+//      return d.name;
+//    })
+//    .style({'fill-opacity': 1, 'fill': '#fff'});
+//
+//  infoNode.append('a')
+//    .attr("xlink:href", "http://en.wikipedia.org/wiki")
+//    .attr("target", "_blank")
+//    .append('text')
+//    .attr('x', 0)
+//    .attr('y', 32)
+//    .attr('dy', '.35em')
+//    .text(function (d) {
+//      return d.name;
+//    })
+//    .style({'fill-opacity': 1, 'fill': '#fff'});
+}
+
+// Create avatar
+function createAvatar(nodeEnter) {
+  let avatarNode = nodeEnter.append('a')
+    .attr("xlink:href", "http://en.wikipedia.org/wiki")
+    .attr("target", "_blank");
+
+  avatarNode.append('svg:image')
+    .attr({
+      'xlink:href': 'https://glo-assets.globallogic.com/system/data/66370/profile/me.jpeg?1535720328',  // can also add svg file here
+      x: commonAxis + 5,
+      y: avatar.margin,
+      width: avatar.width,
+      height: avatar.height
+    });
+}
+
+// Transition nodes to their new position.
+function nodeUpdate(node) {
+  let nodeUpdate = node.transition()
+    .duration(400)
+    .attr("transform", function (d) {
+      return "translate(" + d.x + "," + d.y + ")";
+    });
+
+  nodeUpdate.select("rect")
+    .attr("width", tileWidth)
+    .attr("height", tileHeight)
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+    .style("fill", function (d) {
+      return d._children ? "lightsteelblue" : "#444";
     });
 
   nodeUpdate.select("text")
     .style("fill-opacity", 1);
+}
 
-  // Init event on node
+// Create toggle button
+function createToggleButton(nodeEnter) {
   nodeEnter.append('rect')
     .attr('class', 'toggle-btn')
-    .attr('x', -toggleButtonWidth / 2)
-    .attr('y', tileHeight - toggleButtonHeight)
-    .attr('width', toggleButtonWidth)
-    .attr('height', toggleButtonHeight)
+    .attr('x', -toggleButton.width / 2)
+    .attr('y', tileHeight - toggleButton.height - toggleButton.margin)
+    .attr('width', toggleButton.width)
+    .attr('height', toggleButton.height)
     .style('fill', 'white');
+}
 
-//  let toggleButton = svg.selectAll('.toggle-btn').on('click', setEventOnNode);
-
-  let infoNode = nodeEnter.append('g')
-    .attr('class', 'person-info')
-    .attr('transform', function (d) {
-      return 'translate(' + textGroupPosition + ',' + 0 + ')';
-    });
-
-  infoNode.append('a')
-    .attr("xlink:href", "http://en.wikipedia.org/wiki")
-    .attr("target", "_blank")
-    .append('text')
-    .attr('x', 0)
-    .attr('y', 12)
-    .attr('dy', '.35em')
-    .text(function (d) {
-      return d.name;
-    })
-    .style({'fill-opacity': 1, 'fill': '#fff'});
-
-  infoNode.append('a')
-    .attr("xlink:href", "http://en.wikipedia.org/wiki")
-    .attr("target", "_blank")
-    .append('text')
-    .attr('x', 0)
-    .attr('y', 32)
-    .attr('dy', '.35em')
-    .text(function (d) {
-      return d.name;
-    })
-    .style({'fill-opacity': 1, 'fill': '#fff'});
-
-  // Declare the links…
+function createLink(links, source) {
   let link = svg.selectAll('path.link')
     .data(links, function (d) {
       return d.target.id;
     });
 
-  // Update the links…
-  // Enter any new links at the parent's previous position.
-  link.enter().insert('path', 'g')
-    .attr('class', 'link')
-    .attr('d', diagonal);
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+    .duration(400)
+    .attr("d", function (d) {
+      var o = {
+        x: source.x,
+        y: source.y
+      };
+      return diagonal({
+        source: o,
+        target: o
+      });
+    })
+    .remove();
 
-  // Transition links to their new position.
+  return link;
+}
+
+// Enter any new links at the parent's previous position.
+function enterLinkAtParentPosition(link, source) {
+  link.enter().insert("path", "g")
+    .attr("class", "link")
+    .attr("x", tileWidth / 2)
+    .attr("y", tileHeight / 2)
+    .attr("d", function (d) {
+      let o = {
+        x: source.x0,
+        y: source.y0
+      };
+      return diagonal({
+        source: o,
+        target: o
+      });
+    });
+}
+// Transition links to their new position.
+function transitionLinkToNewPosition(link) {
   link.transition()
     .duration(700)
     .attr("d", diagonal);
+}
 
-  // Transition exiting nodes to the parent's new position.
-//  link.exit().transition()
-//    .duration(700)
-//    .attr("d", function(d) {
-//      var o = {x: root.x, y: root.y};
-//      return diagonal({root: o, target: o});
-//    })
-//    .remove();
-
-  // Stash the old positions for transition.
+// Stash the old positions for transition.
+function stashOldPositionsForTransition(nodes) {
   nodes.forEach(function(d) {
     d.x0 = d.x;
     d.y0 = d.y;
   });
-
-  /*
-  * Avatar
-  * */
-  let avatar = nodeEnter.append('a')
-    .attr("xlink:href", "http://en.wikipedia.org/wiki")
-    .attr("target", "_blank");
-
-  avatar.append('svg:image')
-    .attr({
-      'xlink:href': 'https://glo-assets.globallogic.com/system/data/66370/profile/me.jpeg?1535720328',  // can also add svg file here
-      x: commonAxis + 5,
-      y: avatarMargin,
-      width: avatarWidth,
-      height: avatarHeight
-    });
-
-  /*
-  * End Avatar
-  * */
 }
 
-/*Add event on node*/
-function setEventOnNode(element) {
+function update(source) {
+  // Compute the new tree layout.
+  let nodes = tree.nodes(source).reverse();
+  let links = tree.links(nodes);
 
+  // Distance between nodes
+   nodes.forEach((d) => d.y = d.depth * 200);
+
+  // Update the nodes…
+  let node = updateNodes(nodes);
+  // Enter any new nodes at the parent's previous position.
+  let nodeEnter = nodeEnterAtParentsPosition(node);
+
+  // Create person card
+  createPersonCard(nodeEnter);
+  createAvatar(nodeEnter);
+
+  // Create toggle button
+  createToggleButton(nodeEnter);
+  // Transition nodes to their new position.
+  nodeUpdate(node);
+
+  // Create the links…
+  let link = createLink(links, source);
+  // Enter any new links at the parent's previous position.
+  enterLinkAtParentPosition(link, source);
+  // Transition links to their new position.
+  transitionLinkToNewPosition(link);
+  // Stash the old positions for transition.
+  stashOldPositionsForTransition(nodes);
+}
+
+// Toggle children on click.
+function setEventOnNode(element) {
   if (element.children) {
     element._children = element.children;
     element.children = null;
@@ -211,6 +306,35 @@ function setEventOnNode(element) {
     element.children = element._children;
     element._children = null;
   }
-//  combineChartData(persons);
   update(element);
+}
+
+/*Collapse node*/
+function collapseNode(element, node, nodeEnter) {
+  let children = element.children;
+//  console.log(nodeEnter);
+  let targetId = `#node-${element.id}`;
+  svg.select(targetId).transition()
+    .duration(700)
+    .attr('transform', function (d) {
+      return 'translate(' + 0 + ',' + 0 + ')';
+    });
+
+
+  children.forEach(function (item) {
+    item.x = element.x;
+    item.y = element.y;
+
+    node[0].forEach((e)=> {
+
+    });
+  });
+}
+
+//Redraw for zoom
+function redraw() {
+  //console.log("here", d3.event.translate, d3.event.scale);
+  svg.attr("transform",
+    "translate(" + d3.event.translate + ")"
+    + " scale(" + d3.event.scale + ")");
 }
