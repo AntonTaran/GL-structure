@@ -1,5 +1,12 @@
+
 .node {
     cursor: pointer;
+    width: 50px;
+    height: 50px;
+    padding: .5rem .5rem 1.5rem;
+    background: #fff;
+    box-shadow: 1px 1px 3px 5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 .node circle {
     fill: #fff;
@@ -9,12 +16,35 @@
 .node text {
     font: 10px sans-serif;
 }
+
+.node img {
+    width: 50px;
+    height: 50px;
+    margin-right: .5rem;
+}
+.node-name {
+    display: block;
+    font-size: 1rem;
+    margin: 0 0 .7rem;
+    opacity: 0;
+}
+
+.node-desc {
+    font-size: .8rem;
+    margin: 0 0 .5rem;
+    opacity: 0;
+}
+
 .link {
     fill: none;
     stroke: #ccc;
     stroke-width: 1.5px;
 }
 
-body {
-    overflow: hidden;
+.Treant .collapse-switch {
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    width: 10px;
+    height: 10px;
 }

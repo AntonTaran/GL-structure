@@ -10,7 +10,11 @@ module.exports = {
   mode: 'development',
   context: __dirname + "/src/modules",
   entry: {
-    bundle: [/*'./index.js',*/ /*'./tree.js',*/ './test-tree.js']
+    bundle: [
+      './index.js',
+      /*'./tree.js',*/
+//      './test-tree.js'
+    ]
   },
 
   module: {
