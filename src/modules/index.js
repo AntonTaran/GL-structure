@@ -1,12 +1,59 @@
+var svg1 = document.getElementsByTagName('svg');
+var wrapper = document.querySelector('#collapsable-example');
+var container = document.querySelector('.container');
+$("#collapsable-example").resizable({
+  alsoResize: "#mirror"
+});
+document.addEventListener('DOMContentLoaded', function () {
+  console.log(container.clientWidth);
+});
+var obj = {a: 0};
+
+function foo2() {
+  var scale = 0;
+
+  return function () {
+    scale = scale + (1 / 10);
+    return scale;
+  }
+}
+
+var counter = foo2();
+var currentZoom;
+function getCoordinate(x) {
+  console.log(Array.from(svg1)[0].getBoundingClientRect().right);
+  console.log(container.clientWidth);
+
+  if (Array.from(svg1)[0].getBoundingClientRect().right > container.clientWidth) {
+    currentZoom = 1 - counter();
+    wrapper.style.transform = `scale(${1 - counter()})`;
+    console.log(currentZoom);
+  } else {
+//    console.log(currentZoom);
+//    console.log(counter());
+//    wrapper.style.transform = `scale(${currentZoom + (1 / 10)})`;
+  }
+}
+
 var chart_config = {
   chart: {
     container: "#collapsable-example",
     animateOnInit: true,
+    callback: {
+      onToggleCollapseFinished: function (e) {
+
+        getCoordinate(e.X);
+      },
+    },
     node: {
       collapsable: true
     },
-    levelSeparation: 40,
-    siblingSeparation: 20,
+    levelSeparation: 30,
+    siblingSeparation: 10,
+    subTeeSeparation: 15,
+//    rootOrientation: 'WEST',
+//    hideRootNode: true,
+    nodeAlign: 'LEFT',
     connectors: {
       type: 'step',
       style: {
@@ -31,237 +78,153 @@ var chart_config = {
     }
   },
   nodeStructure: {
-    image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+    image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
     text: {
       name: {
         val: "Nataliya Siromakha",
         href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
         target: "_blank"
       },
-      desc: {
-        val: "Director,Engineering",
-        href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-        target: "_blank"
-      },
-      title: {
-        val: "MTC WFA TestSOP",
-        href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-        target: "_blank"
-      },
       nodeAlign: 'BOTTOM',
     },
     children: [
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
         text: {
           name: {
             val: "Iulia Izonina",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
             target: "_blank"
           },
-          desc: {
-            val: "Director,Engineering",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-          title: {
-            val: "MTC WFA TestSOP",
-            href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-            target: "_blank"
-          }
         },
-        stackChildren: true,
-        childrenDropLevel: 2,
+//        stackChildren: true,
+//        childrenDropLevel: 2,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
-                val: "Iulia Izonina",
+                val: "Some longnameeeeeee",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             children: [{}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Iulia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
+            },
+            stackChildren: true,
+            children: [{}, {}]
+          },
+          {
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            text: {
+              name: {
+                val: "Iulia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
+            },
+            children: [{}]
+          },
+          {
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            text: {
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
-              }
+              },
+            },
+            children: [{}]
+          },
+          {
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            text: {
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            children: [{}]
+          },
+          {
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            text: {
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
             },
             children: [{}, {}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
-            text: {
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
-            },
-            children: [{}]
-          },
-          {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
-            text: {
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
-            },
-            children: [{}]
-          },
-          {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
-            text: {
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
-            },
-            children: [{}]
-          },
-          {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
-            text: {
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
-            },
-            children: [{}, {}]
-          },
-          {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Iuldcdscsia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
           },
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+        text: {
+          name: {
+            val: "Igor Rudko",
+            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+            target: "_blank"
+          },
+        },
+        stackChildren: true,
+        children: [
+          {
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            text: {
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+        ]
+      },
+      {
+        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
         text: {
           name: {
             val: "Viktor Matusov",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
             target: "_blank"
           },
-          desc: {
-            val: "Director,Engineering",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-          title: {
-            val: "MTC WFA TestSOP",
-            href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-            target: "_blank"
-          }
         },
         stackChildren: true,
         drawLineThrough: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Alexander Lanin",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true,
@@ -270,197 +233,82 @@ var chart_config = {
             ]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Vitalii Litvin",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             }
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Vitalii Tilinskii",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             }
           },
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
-        text: {
-          name: {
-            val: "Igor Rudko",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-          desc: {
-            val: "Director,Engineering",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-          title: {
-            val: "MTC WFA TestSOP",
-            href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-            target: "_blank"
-          }
-        },
-        stackChildren: true,
-        children: [
-          {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
-            text: {
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-        ]
-      },
-      {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
         text: {
           name: {
             val: "Yevgenii Kolometskiy",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
             target: "_blank"
           },
-          desc: {
-            val: "Director,Engineering",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-          title: {
-            val: "MTC WFA TestSOP",
-            href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-            target: "_blank"
-          }
         },
         stackChildren: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true,
@@ -471,110 +319,60 @@ var chart_config = {
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
         text: {
           name: {
             val: "Dmytro Levitskiy (US)",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
             target: "_blank"
           },
-          desc: {
-            val: "Director,Engineering",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-          title: {
-            val: "MTC WFA TestSOP",
-            href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-            target: "_blank"
-          }
         },
         stackChildren: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true,
@@ -582,133 +380,73 @@ var chart_config = {
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
         text: {
           name: {
             val: "Denys Bratchuk",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
             target: "_blank"
           },
-          desc: {
-            val: "Director,Engineering",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-          title: {
-            val: "MTC WFA TestSOP",
-            href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-            target: "_blank"
-          }
         },
         stackChildren: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             drawLineThrough: true,
             children: [{}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM1ODA0NjMsImlhdCI6MTU0MzQ5NDA2MywiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJfc0RNUDA0c3RGQ3lweERpd2dIVkx3IiwibmJmIjoxNTQzNDk0MDYzfQ.GnB_Ew_A1jIlkZhY3F_d1XObgk4TCvr1LyAertnLveUCIUbDDCa8Q2UPeFpw3_3pG2fHJG085GY6sUkYGJxMOuik2C-CVLyNSMDxQKzKDJ7qtqn4P8kbyxlU6CVYvEQgHLUeBUkD6STCrw8pLtFnJxEnLZE6UsOwwNzgYOjQC53qI10HWUeFkFK23xsFMm8VtfJclKha7UN3S3S5RwT3biqVKDGHpLHwlTiJ-lHnnv3wpK9mhoabv0lW8b8W6vJCVtPN1mmYTXcJ_VIl30ebKd-VMuyi_sOOmkNt9X1aaDs5O54JZGqg3_11eKdxH59goQmbG83pH5n7tMiRWafHiA?size=320",
+            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
             text: {
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
                 target: "_blank"
               },
-              desc: {
-                val: "Director,Engineering",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-              title: {
-                val: "MTC WFA TestSOP",
-                href: 'https://portal.globallogic.com/project/profile/b67da0cd2ed9/general',
-                target: "_blank"
-              }
             },
             stackChildren: true,
             children: [{}]
