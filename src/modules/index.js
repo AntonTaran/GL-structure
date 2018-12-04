@@ -1,13 +1,12 @@
+import '../assets/scss/index.scss';
+
+//var css = require('../assets/styles/index.css');
+
 var svg1 = document.getElementsByTagName('svg');
 var wrapper = document.querySelector('#collapsable-example');
 var container = document.querySelector('.container');
-$("#collapsable-example").resizable({
-  alsoResize: "#mirror"
-});
-document.addEventListener('DOMContentLoaded', function () {
-  console.log(container.clientWidth);
-});
-var obj = {a: 0};
+
+var tree;
 
 function foo2() {
   var scale = 0;
@@ -20,19 +19,18 @@ function foo2() {
 
 var counter = foo2();
 var currentZoom;
-function getCoordinate(x) {
+function scaleOnCollapse(x) {
   console.log(Array.from(svg1)[0].getBoundingClientRect().right);
   console.log(container.clientWidth);
 
   if (Array.from(svg1)[0].getBoundingClientRect().right > container.clientWidth) {
     currentZoom = 1 - counter();
     wrapper.style.transform = `scale(${1 - counter()})`;
-    console.log(currentZoom);
-  } else {
-//    console.log(currentZoom);
-//    console.log(counter());
-//    wrapper.style.transform = `scale(${currentZoom + (1 / 10)})`;
   }
+}
+
+function onChangeZoom() {
+
 }
 
 var chart_config = {
@@ -42,7 +40,7 @@ var chart_config = {
     callback: {
       onToggleCollapseFinished: function (e) {
 
-        getCoordinate(e.X);
+//        scaleOnCollapse(e.X);
       },
     },
     node: {
@@ -51,8 +49,6 @@ var chart_config = {
     levelSeparation: 30,
     siblingSeparation: 10,
     subTeeSeparation: 15,
-//    rootOrientation: 'WEST',
-//    hideRootNode: true,
     nodeAlign: 'LEFT',
     connectors: {
       type: 'step',
@@ -78,8 +74,9 @@ var chart_config = {
     }
   },
   nodeStructure: {
-    image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+    image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
     text: {
+      desc: 'i',
       name: {
         val: "Nataliya Siromakha",
         href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -89,8 +86,9 @@ var chart_config = {
     },
     children: [
       {
-        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
         text: {
+          desc: 'i',
           name: {
             val: "Iulia Izonina",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -99,10 +97,12 @@ var chart_config = {
         },
 //        stackChildren: true,
 //        childrenDropLevel: 2,
+        collapsed: true,
         children: [
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Some longnameeeeeee",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -113,8 +113,9 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Iulia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -125,8 +126,9 @@ var chart_config = {
             children: [{}, {}]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Iulia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -136,8 +138,9 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Iulia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -147,8 +150,9 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Iulia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -158,8 +162,9 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Iulia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -169,8 +174,9 @@ var chart_config = {
             children: [{}, {}]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Iuldcdscsia Izonina",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -181,8 +187,9 @@ var chart_config = {
         ]
       },
       {
-        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
         text: {
+          desc: 'i',
           name: {
             val: "Igor Rudko",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -190,10 +197,12 @@ var chart_config = {
           },
         },
         stackChildren: true,
+        collapsed: true,
         children: [
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -206,8 +215,9 @@ var chart_config = {
         ]
       },
       {
-        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
         text: {
+          desc: 'i',
           name: {
             val: "Viktor Matusov",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -216,10 +226,12 @@ var chart_config = {
         },
         stackChildren: true,
         drawLineThrough: true,
+        collapsed: true,
         children: [
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Alexander Lanin",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -233,8 +245,9 @@ var chart_config = {
             ]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Vitalii Litvin",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -243,8 +256,9 @@ var chart_config = {
             }
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Vitalii Tilinskii",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -255,8 +269,9 @@ var chart_config = {
         ]
       },
       {
-        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
         text: {
+          desc: 'i',
           name: {
             val: "Yevgenii Kolometskiy",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -264,10 +279,12 @@ var chart_config = {
           },
         },
         stackChildren: true,
+        collapsed: true,
         children: [
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -278,8 +295,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -290,8 +308,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -302,8 +321,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -319,8 +339,9 @@ var chart_config = {
         ]
       },
       {
-        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
         text: {
+          desc: 'i',
           name: {
             val: "Dmytro Levitskiy (US)",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -328,10 +349,12 @@ var chart_config = {
           },
         },
         stackChildren: true,
+        collapsed: true,
         children: [
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -342,8 +365,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -354,8 +378,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -366,8 +391,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -380,8 +406,9 @@ var chart_config = {
         ]
       },
       {
-        image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
         text: {
+          desc: 'i',
           name: {
             val: "Denys Bratchuk",
             href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -389,10 +416,12 @@ var chart_config = {
           },
         },
         stackChildren: true,
+        collapsed: true,
         children: [
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -403,8 +432,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -415,8 +445,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -427,8 +458,9 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -440,8 +472,9 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://www.punanaamio.fi/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/s/m/sm144-homer-simpson-julkkisnaamari.jpg",
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
             text: {
+              desc: 'i',
               name: {
                 val: "Liliya Kondratieva",
                 href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
@@ -456,55 +489,5 @@ var chart_config = {
     ]
   }
 };
-
-/* Array approach
-    var config = {
-        container: "#collapsable-example",
-        animateOnInit: true,
-
-        node: {
-            collapsable: true
-        },
-        animation: {
-            nodeAnimation: "easeOutBounce",
-            nodeSpeed: 700,
-            connectorsAnimation: "bounce",
-            connectorsSpeed: 700
-        }
-    },
-    malory = {
-        image: "img/malory.png"
-    },
-    lana = {
-        parent: malory,
-        image: "img/lana.png"
-    }
-    figgs = {
-        parent: lana,
-        image: "img/figgs.png"
-    }
-    sterling = {
-        parent: malory,
-        childrenDropLevel: 1,
-        image: "img/sterling.png"
-    },
-    woodhouse = {
-        parent: sterling,
-        image: "img/woodhouse.png"
-    },
-    pseudo = {
-        parent: malory,
-        pseudo: true
-    },
-    cheryl = {
-        parent: pseudo,
-        image: "img/cheryl.png"
-    },
-    pam = {
-        parent: pseudo,
-        image: "img/pam.png"
-    },
-    chart_config = [config, malory, lana, figgs, sterling, woodhouse, pseudo, pam, cheryl];
-*/
 
 tree = new Treant(chart_config);

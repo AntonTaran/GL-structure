@@ -2,20 +2,14 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
 const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 
-
 module.exports = {
-  mode: 'development',
-  context: __dirname + "/src/modules",
-  entry: {
-    bundle: [
-      './index.js',
-      /*'./tree.js',*/
-//      './test-tree.js'
-    ]
-  },
+  mode: 'none',
+  context: __dirname + "/src/",
+  entry: ['./modules/index.js', /*'./modules/tree.js'*/],
 
   module: {
     rules: [
@@ -24,17 +18,18 @@ module.exports = {
         exclude: /node_modules/, // exclude any and all files in the node_modules folder
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
         loader: 'babel-loader',
         options: {
           presets: ["@babel/env"]
         },
+      },
+      {
+        test: /\.s?.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
       /*{
         test: /\.(jpg|png|svg)$/,
@@ -63,7 +58,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].js',
+    filename: 'index.bundle.js',
     path: path.resolve(__dirname, "build"), // string
     publicPath: "/build/",
   },

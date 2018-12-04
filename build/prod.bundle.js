@@ -1,103 +1,625 @@
-console.log('dcdscds');
-import * as dataTree from '../data/tree-data';
+import '../assets/scss/index.scss';
 
-let persons = dataTree.persons;
-let newPersons = [];
+//var css = require('../assets/styles/index.css');
 
-for (let i = 0; i < persons.length; i++) {
-  let element = persons[i];
+var svg1 = document.getElementsByTagName('svg');
+var wrapper = document.querySelector('#collapsable-example');
+var container = document.querySelector('.container');
 
-  for (let j = i; j < persons.length; j++) {
-    let element2 = persons[j];
-    if (element.name === element2.parent) {
-      element.children.push(element2);
-    }
+var tree;
+
+function foo2() {
+  var scale = 0;
+
+  return function () {
+    scale = scale + (1 / 10);
+    return scale;
   }
-
-  newPersons.push(element);
 }
 
-var treeData = persons;
+console.log('csdcdcdscds');
 
-// ************** Generate the tree diagram	 *****************
+var counter = foo2();
+var currentZoom;
+function scaleOnCollapse(x) {
+  console.log(Array.from(svg1)[0].getBoundingClientRect().right);
+  console.log(container.clientWidth);
 
-function initTree() {
-  var margin = {
-    top: 40,
-    right: 120,
-    bottom: 20,
-    left: 120
-  };
-
-  var width = 1000;
-  var height = 1000;
-
-  var tree = d3
-    .layout
-    .tree()
-    .size([height, width]);
-
-  var diagonal = d3.svg.diagonal()
-    .projection(function (d) {
-      return [d.x, d.y];
-    });
-
-  var svg = d3.select('.chart-container').append('svg')
-    .attr('width', width + margin.right + margin.left)
-    .attr('height', height + margin.top + margin.bottom)
-    .append('g')
-    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-  var root = treeData[0];
-
-  update({root, tree, diagonal, svg});
+  if (Array.from(svg1)[0].getBoundingClientRect().right > container.clientWidth) {
+    currentZoom = 1 - counter();
+    wrapper.style.transform = `scale(${1 - counter()})`;
+  }
 }
 
-initTree();
+function onChangeZoom() {
 
-function update(parameters) {
-  let {root, tree, diagonal, svg} = parameters;
-  let index = 0;
+}
 
-  // Compute the new tree layout.
-  let nodes = tree.nodes(root);
-  let links = tree.links(nodes);
+var chart_config = {
+  chart: {
+    container: "#collapsable-example",
+    animateOnInit: true,
+    callback: {
+      onToggleCollapseFinished: function (e) {
 
-  // Distance between nodes
-  nodes.forEach(function (d) {
-    d.y = d.depth * 200;
+//        scaleOnCollapse(e.X);
+      },
+    },
+    node: {
+      collapsable: true
+    },
+    levelSeparation: 30,
+    siblingSeparation: 10,
+    subTeeSeparation: 15,
+    nodeAlign: 'LEFT',
+    connectors: {
+      type: 'step',
+      style: {
+        'stroke': 'grey',
+//        'arrow-end': {string},
+//        'cursor': {string},
+//        'fill': {string},
+////'fill-opacity': {0.5},
+//        'opacity': {number},
+//        'stroke': {string},
+//        'stroke-dasharray': {string},
+//        'stroke-linecap': {string},
+//        'stroke-opacity': {number},
+        'stroke-width': 4,
+      }
+    },
+    animation: {
+      nodeAnimation: "linear ",
+      nodeSpeed: 500,
+      connectorsAnimation: "linear",
+      connectorsSpeed: 100
+    }
+  },
+  nodeStructure: {
+    image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+    text: {
+      desc: 'i',
+      name: {
+        val: "Nataliya Siromakha",
+        href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+        target: "_blank"
+      },
+      nodeAlign: 'BOTTOM',
+    },
+    children: [
+      {
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        text: {
+          desc: 'i',
+          name: {
+            val: "Iulia Izonina",
+            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+            target: "_blank"
+          },
+        },
+//        stackChildren: true,
+//        childrenDropLevel: 2,
+        collapsed: true,
+        children: [
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Some longnameeeeeee",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            children: [{}]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            children: [{}, {}]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            children: [{}]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            children: [{}]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            children: [{}]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Iulia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            children: [{}, {}]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Iuldcdscsia Izonina",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+          },
+        ]
+      },
+      {
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        text: {
+          desc: 'i',
+          name: {
+            val: "Igor Rudko",
+            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+            target: "_blank"
+          },
+        },
+        stackChildren: true,
+        collapsed: true,
+        children: [
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+        ]
+      },
+      {
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        text: {
+          desc: 'i',
+          name: {
+            val: "Viktor Matusov",
+            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+            target: "_blank"
+          },
+        },
+        stackChildren: true,
+        drawLineThrough: true,
+        collapsed: true,
+        children: [
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Alexander Lanin",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true,
+            children: [
+              {}
+            ]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Vitalii Litvin",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            }
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Vitalii Tilinskii",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            }
+          },
+        ]
+      },
+      {
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        text: {
+          desc: 'i',
+          name: {
+            val: "Yevgenii Kolometskiy",
+            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+            target: "_blank"
+          },
+        },
+        stackChildren: true,
+        collapsed: true,
+        children: [
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true,
+            children: [{
+              children: [{}]
+            }]
+          },
+        ]
+      },
+      {
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        text: {
+          desc: 'i',
+          name: {
+            val: "Dmytro Levitskiy (US)",
+            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+            target: "_blank"
+          },
+        },
+        stackChildren: true,
+        collapsed: true,
+        children: [
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true,
+          },
+        ]
+      },
+      {
+        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        text: {
+          desc: 'i',
+          name: {
+            val: "Denys Bratchuk",
+            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+            target: "_blank"
+          },
+        },
+        stackChildren: true,
+        collapsed: true,
+        children: [
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            drawLineThrough: true,
+            children: [{}]
+          },
+          {
+            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            text: {
+              desc: 'i',
+              name: {
+                val: "Liliya Kondratieva",
+                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
+                target: "_blank"
+              },
+            },
+            stackChildren: true,
+            children: [{}]
+          },
+        ]
+      },
+    ]
+  }
+};
+
+tree = new Treant(chart_config);
+
+//import * as dataTree from '../data/test-tree-data';
+import * as dataTree from '../data/tree-data';
+//import {persons} from '../data/tree-data';
+
+// Const params
+const margin = {
+  top: 40,
+  right: 120,
+  bottom: 20,
+  left: 120
+};
+
+//const tableData = [dataTree.root];
+const tableData = dataTree.persons;
+
+let root = combineChartData(tableData)[0];
+
+/*Combine tree data*/
+function combineChartData(persons) {
+  return persons.map(function (element, i) {
+    for (let j = i; j < persons.length; j++) {
+      let element2 = persons[j];
+
+      if (element.name === element2.parent) {
+        element.children.push(element2);
+      }
+    }
+    return element;
+  });
+}
+console.log('cdscdscdscs');
+
+const width = 960 - margin.right - margin.left;
+const height = 1800 - margin.top - margin.bottom;
+const tree = d3.layout.tree().nodeSize([200, 70]);
+
+const tileWidth = 200;
+const tileHeight = 70;
+const commonAxis = -tileWidth / 2;
+const avatar = {
+  width: 50,
+  height: 50,
+  margin: 5,
+};
+const textGroupMargin = 5;
+const toggleButton = {
+  width: 10,
+  height: 10,
+  margin: 5,
+};
+const textGroupPosition = commonAxis + avatar.width + avatar.margin + textGroupMargin;
+
+let diagonal = d3.svg.diagonal()
+  .projection(function (d) {
+    return [d.x + tileWidth / 2, d.y + tileHeight / 2];
   });
 
-  // Declare the nodes…
-  let node = svg.selectAll('g.node')
-    .data(nodes, function (d) {
-      return d.id || (d.id = ++index);
-    });
+var zm;
 
-  // Enter the nodes.
-  let nodeEnter = node.enter().append('g')
+//let svg = d3.select('.chart-container').append('svg')
+//  .attr('width', width + margin.right + margin.left)
+//  .attr('height', height + margin.top + margin.bottom)
+//  .append('g')
+//  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+//  .style("height", "800px");
+
+var svg = d3.select(".chart-container").append("svg").attr("width", 1000).attr("height", 1000)
+  .call(zm = d3.behavior.zoom().scaleExtent([1, 3]).on("zoom", redraw)).append("g")
+  .attr("transform", "translate(" + 350 + "," + 20 + ")");
+
+root.x0 = 0;
+root.y0 = height / 2;
+
+function collapse(d) {
+  if (d.children) {
+    d._children = d.children;
+    d._children.forEach(collapse);
+    d.children = null;
+  }
+}
+
+root.children.forEach(collapse);
+//update(root);
+
+// Update the nodes…
+function updateNodes(nodes) {
+  let index = 0;
+  let node = svg
+    .selectAll('g.node')
+    .data(nodes, (d) => d.id || (d.id = ++index));
+
+  return node;
+}
+
+// Enter any new nodes at the parent's previous position.
+function nodeEnterAtParentsPosition(node) {
+  let nodeEnter = node.enter()
+    .append('g')
     .attr('class', 'node')
-    .attr('transform', function (d) {
-      return 'translate(' + d.x + ',' + d.y + ')';
+    .attr('id', (element) => 'node-' + element.id)
+    .attr('transform', (element) => 'translate(' + element.x + ',' + element.y + ')')
+    .on('click', setEventOnNode);
+
+  nodeEnter.append("rect")
+    .attr("width", rectW)
+    .attr("height", rectH)
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+    .style("fill", function (d) {
+      return d._children ? "lightsteelblue" : "#fff";
     });
 
-//  nodeEnter.html('<div>some</div>');
+  nodeEnter.append("text")
+    .attr("x", rectW / 2)
+    .attr("y", rectH / 2)
+    .attr("dy", ".35em")
+    .attr("text-anchor", "middle")
+    .text(function (d) {
+      return d.name;
+    });
 
-  let tileWidth = 200;
-  let tileHeight = 70;
-  const commonAxis = -tileWidth / 2;
-  const avatarWidth = 50;
-  const avatarHeight = 50;
-  const avatarMargin = 5;
-  const textGroupMargin = 5;
-  const avatarPosition = {
-    x: commonAxis + 25,
-    y: avatarHeight / 2,
-  };
+  return nodeEnter;
+}
 
-  const textGroupPosition = commonAxis + avatarWidth + avatarMargin + textGroupMargin;
-
-  // Create member card
+// Create person card
+function createPersonCard(nodeEnter) {
   nodeEnter.append('rect')
     .attr('x', commonAxis)
     .attr('y', 0)
@@ -105,113 +627,211 @@ function update(parameters) {
     .attr('height', tileHeight)
     .style('fill', '#444');
 
-  // Create avatar
-//  nodeEnter.append('image')
-//    .attr('x', -tileWidth / 2)
-//    .attr('y', 0)
-//    .attr('width', tileWidth)
-//    .attr('height', tileHeight)
-//    .style('fill', '#444');
-
-//  nodeEnter.append('text')
-//    .attr('y', function (d) {
-//      return 12; // If child exist change title position
-//    })
+//  let infoNode = nodeEnter.append('g')
+//    .attr('class', 'person-info')
+//    .attr('transform', function (d) {
+//      return 'translate(' + textGroupPosition + ',' + 0 + ')';
+//    });
+//
+//  infoNode.append('a')
+//    .attr("xlink:href", "http://en.wikipedia.org/wiki")
+//    .attr("target", "_blank")
+//    .append('text')
+//    .attr('x', 0)
+//    .attr('y', 12)
 //    .attr('dy', '.35em')
-//    .attr('text-anchor', 'middle')
 //    .text(function (d) {
 //      return d.name;
 //    })
 //    .style({'fill-opacity': 1, 'fill': '#fff'});
+//
+//  infoNode.append('a')
+//    .attr("xlink:href", "http://en.wikipedia.org/wiki")
+//    .attr("target", "_blank")
+//    .append('text')
+//    .attr('x', 0)
+//    .attr('y', 32)
+//    .attr('dy', '.35em')
+//    .text(function (d) {
+//      return d.name;
+//    })
+//    .style({'fill-opacity': 1, 'fill': '#fff'});
+}
 
-  let infoNode = nodeEnter.append('g')
-    .attr('class', 'person-info')
-    .attr('transform', function (d) {
-      return 'translate(' + textGroupPosition + ',' + 0 + ')';
+// Create avatar
+function createAvatar(nodeEnter) {
+  let avatarNode = nodeEnter.append('a')
+    .attr("xlink:href", "http://en.wikipedia.org/wiki")
+    .attr("target", "_blank");
+
+  avatarNode.append('svg:image')
+    .attr({
+      'xlink:href': 'https://glo-assets.globallogic.com/system/data/66370/profile/me.jpeg?1535720328',  // can also add svg file here
+      x: commonAxis + 5,
+      y: avatar.margin,
+      width: avatar.width,
+      height: avatar.height
+    });
+}
+
+// Transition nodes to their new position.
+function nodeUpdate(node) {
+  let nodeUpdate = node.transition()
+    .duration(400)
+    .attr("transform", function (d) {
+      return "translate(" + d.x + "," + d.y + ")";
     });
 
-  infoNode.append('a')
-    .attr("xlink:href", "http://en.wikipedia.org/wiki")
-    .attr("target", "_blank")
-    .append('text')
-    .attr('x', 0)
-    .attr('y', 12)
-    .attr('dy', '.35em')
-    .text(function (d) {
-      return d.name;
-    })
-    .style({'fill-opacity': 1, 'fill': '#fff'});
+  nodeUpdate.select("rect")
+    .attr("width", tileWidth)
+    .attr("height", tileHeight)
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+    .style("fill", function (d) {
+      return d._children ? "lightsteelblue" : "#444";
+    });
 
-  infoNode.append('a')
-    .attr("xlink:href", "http://en.wikipedia.org/wiki")
-    .attr("target", "_blank")
-    .append('text')
-    .attr('x', 0)
-    .attr('y', 32)
-    .attr('dy', '.35em')
-    .text(function (d) {
-      return d.name;
-    })
-    .style({'fill-opacity': 1, 'fill': '#fff'});
+  nodeUpdate.select("text")
+    .style("fill-opacity", 1);
+}
 
-  // Declare the links…
+// Create toggle button
+function createToggleButton(nodeEnter) {
+  nodeEnter.append('rect')
+    .attr('class', 'toggle-btn')
+    .attr('x', -toggleButton.width / 2)
+    .attr('y', tileHeight - toggleButton.height - toggleButton.margin)
+    .attr('width', toggleButton.width)
+    .attr('height', toggleButton.height)
+    .style('fill', 'white');
+}
+
+function createLink(links, source) {
   let link = svg.selectAll('path.link')
     .data(links, function (d) {
       return d.target.id;
     });
 
-//  let avatar = nodeEnter.append("svg:pattern")
-//    .attr("id", "grump_avatar")
-//    .attr("width", 50)
-//    .attr("height", 50)
-//    .attr("cx", 0)
-//    .attr("cy", 0)
-//    .attr("patternUnits", "userSpaceOnUse")
-//    .append("svg:image")
-//    .attr("xlink:href", 'https://glo-assets.globallogic.com/system/data/66370/profile/me.jpeg?1535720328')
-//    .attr("width", 50)
-//    .attr("height", 50)
-//    .attr("cx", 0)
-//    .attr("cy", 0);
-//
-//  let circle = nodeEnter.append("circle")
-//    .attr("transform", "translate(" + 0 + "," + 0 + ")")
-//    .attr("cx", avatarPosition.x + avatarMargin)
-//    .attr("cy", avatarPosition.y + avatarMargin)
-//    .attr("r", 50 / 2)
-//    .style("fill", "#fff")
-//    .style("fill", "url(#grump_avatar");
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+    .duration(400)
+    .attr("d", function (d) {
+      var o = {
+        x: source.x,
+        y: source.y
+      };
+      return diagonal({
+        source: o,
+        target: o
+      });
+    })
+    .remove();
 
-//  nodeEnter.append("circle")
-//    .attr("transform", "translate(" + 0 + "," + 0 + ")")
-//    .attr("cx", avatarPosition.x + avatarMargin)
-//    .attr("cy", avatarPosition.y + avatarMargin)
-//    .attr("r", avatarWidth / 2)
-//    .style("fill", "#fff");
+  return link;
+}
 
-  /*
-  * Avatar
-  * */
-  let avatar = nodeEnter.append('a')
-    .attr("xlink:href", "http://en.wikipedia.org/wiki")
-    .attr("target", "_blank");
+// Enter any new links at the parent's previous position.
+function enterLinkAtParentPosition(link, source) {
+  link.enter().insert("path", "g")
+    .attr("class", "link")
+    .attr("x", tileWidth / 2)
+    .attr("y", tileHeight / 2)
+    .attr("d", function (d) {
+      let o = {
+        x: source.x0,
+        y: source.y0
+      };
+      return diagonal({
+        source: o,
+        target: o
+      });
+    });
+}
+// Transition links to their new position.
+function transitionLinkToNewPosition(link) {
+  link.transition()
+    .duration(700)
+    .attr("d", diagonal);
+}
 
-  avatar.append('svg:image')
-    .attr({
-      'xlink:href': 'https://glo-assets.globallogic.com/system/data/66370/profile/me.jpeg?1535720328',  // can also add svg file here
-      x: commonAxis + 5,
-      y: avatarMargin,
-      width: avatarWidth,
-      height: avatarHeight
+// Stash the old positions for transition.
+function stashOldPositionsForTransition(nodes) {
+  nodes.forEach(function(d) {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
+}
+
+function update(source) {
+  // Compute the new tree layout.
+  let nodes = tree.nodes(source).reverse();
+  let links = tree.links(nodes);
+
+  // Distance between nodes
+   nodes.forEach((d) => d.y = d.depth * 200);
+
+  // Update the nodes…
+  let node = updateNodes(nodes);
+  // Enter any new nodes at the parent's previous position.
+  let nodeEnter = nodeEnterAtParentsPosition(node);
+
+  // Create person card
+  createPersonCard(nodeEnter);
+  createAvatar(nodeEnter);
+
+  // Create toggle button
+  createToggleButton(nodeEnter);
+  // Transition nodes to their new position.
+  nodeUpdate(node);
+
+  // Create the links…
+  let link = createLink(links, source);
+  // Enter any new links at the parent's previous position.
+  enterLinkAtParentPosition(link, source);
+  // Transition links to their new position.
+  transitionLinkToNewPosition(link);
+  // Stash the old positions for transition.
+  stashOldPositionsForTransition(nodes);
+}
+
+// Toggle children on click.
+function setEventOnNode(element) {
+  if (element.children) {
+    element._children = element.children;
+    element.children = null;
+  } else {
+    element.children = element._children;
+    element._children = null;
+  }
+  update(element);
+}
+
+/*Collapse node*/
+function collapseNode(element, node, nodeEnter) {
+  let children = element.children;
+//  console.log(nodeEnter);
+  let targetId = `#node-${element.id}`;
+  svg.select(targetId).transition()
+    .duration(700)
+    .attr('transform', function (d) {
+      return 'translate(' + 0 + ',' + 0 + ')';
     });
 
-  /*
-  * End Avatar
-  * */
 
-  // Enter the links.
-  link.enter().insert('path', 'g')
-    .attr('class', 'link')
-    .attr('d', diagonal);
+  children.forEach(function (item) {
+    item.x = element.x;
+    item.y = element.y;
 
+    node[0].forEach((e)=> {
+
+    });
+  });
+}
+
+//Redraw for zoom
+function redraw() {
+  //console.log("here", d3.event.translate, d3.event.scale);
+  svg.attr("transform",
+    "translate(" + d3.event.translate + ")"
+    + " scale(" + d3.event.scale + ")");
 }

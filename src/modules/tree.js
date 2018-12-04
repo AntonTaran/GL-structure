@@ -28,6 +28,7 @@ function combineChartData(persons) {
     return element;
   });
 }
+console.log('cdscdscdscs');
 
 const width = 960 - margin.right - margin.left;
 const height = 1800 - margin.top - margin.bottom;
