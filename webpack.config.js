@@ -5,9 +5,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
 const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
+const devMode = process.env.NODE_ENV;
 
 module.exports = {
-  mode: 'none',
+  mode : devMode,
   context: __dirname + "/src/",
   entry: ['./modules/index.js', /*'./modules/tree.js'*/],
 
@@ -26,16 +27,11 @@ module.exports = {
       {
         test: /\.s?.css$/,
         use: [
-          'style-loader',
+          devMode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
-        ]
-      }
-      /*{
-        test: /\.(jpg|png|svg)$/,
-        loader: 'file',
-        include: './prod.bundle'
-      }*/
+          'sass-loader',
+        ],
+      },
     ]
   },
   devtool: 'inline-source-map',
@@ -56,6 +52,10 @@ module.exports = {
         ],
       }
     }),
+    new MiniCssExtractPlugin({
+      filename: "style.css",
+      publicPath: "/build/",
+    })
   ],
   output: {
     filename: 'index.bundle.js',
@@ -63,3 +63,5 @@ module.exports = {
     publicPath: "/build/",
   },
 };
+
+console.log(devMode);
