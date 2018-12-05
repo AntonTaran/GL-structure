@@ -1,0 +1,39 @@
+.additional-info-modal {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 400px;
+   height: 300px;
+   background: #fff;
+   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.5);
+   
+   .close-btn {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+      transform: rotate(45deg);
+      
+      &:before, &:after {
+         content: '';
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background-color: #444;
+      }
+      
+      &:before {
+         width: 2px;
+         height: 20px;
+      }
+      
+      &:after {
+         width: 20px;
+         height: 2px;
+      }
+   }
+}

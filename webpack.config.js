@@ -10,7 +10,7 @@ const devMode = process.env.NODE_ENV;
 module.exports = {
   mode : devMode,
   context: __dirname + "/src/",
-  entry: ['./modules/index.js', /*'./modules/tree.js'*/],
+  entry: ['./modules/chart-config.js', './modules/index.js', './modules/chart-tooltip.js'],
 
   module: {
     rules: [
@@ -47,8 +47,9 @@ module.exports = {
     new MergeIntoSingleFilePlugin({
       files: {
         "prod.bundle.js": [
+          './src/modules/chart-config.js',
           './src/modules/index.js',
-          './src/modules/tree.js',
+          './src/modules/chart-tooltip.js',
         ],
       }
     }),

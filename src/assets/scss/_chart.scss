@@ -7,63 +7,75 @@
    width: 100%;
    transform-origin: 0 0;
    overflow: visible !important;
-   transform: scale(0.6);
+   //transform: scale(0.6);
    transition: transform .2s ease;
 }
 
-svg {
-   /*width: 100% !important;*/
-}
-
-.node {
+.person-tile {
    width: 80px;
    height: 140px;
    padding: .7rem .7rem 1rem;
    background: #fff;
    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.5);
-   overflow: hidden;
-}
-
-.node circle {
-   fill: #fff;
-   stroke: steelblue;
-   stroke-width: 1.5px;
-}
-.node text {
-   font: 10px sans-serif;
-}
-
-.node img {
-   display: block;
-   width: 70px;
-   height: 70px;
-   margin: 0 auto 10px;
    
+   img {
+      display: block;
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 10px;
+   }
+   
+   .node-name {
+      display: block;
+      margin: 0 0 .7rem;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: .9rem;
+   }
+   
+   img, .node-name {
+      pointer-events: none;
+   }
+   
+   .node-desc {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 1px solid dodgerblue;
+      color: dodgerblue;
+      text-align: center;
+      font-weight: bold;
+      font-size: .8rem;
+      margin: 0 0 .5rem;
+   }
+   
+   .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 1.5px;
+   }
+   
+   .node-tooltip {
+      position: absolute;
+      top: -200px;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.5);
+   }
+   
+   .tooltip-list {
+   
+   }
 }
 
+/* Overwrite */
 .Treant > .node img {
    float: none;
-}
-.node-name {
-   display: block;
-   margin: 0 0 .7rem;
-   /*opacity: 0;*/
-   text-align: center;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   font-size: .9rem;
-}
-
-.node-desc {
-   font-size: .8rem;
-   margin: 0 0 .5rem;
-   /*opacity: 0;*/
-}
-
-.link {
-   fill: none;
-   stroke: #ccc;
-   stroke-width: 1.5px;
 }
 
 .Treant .collapse-switch {
@@ -89,22 +101,5 @@ svg {
    border-width: 10px 10px 0 10px;
    border-color: #444 transparent transparent transparent;
    background: transparent;
-}
-
-.node-desc {
-   position: absolute;
-   top: 5px;
-   right: 5px;
-   width: 15px;
-   height: 15px;
-   border-radius: 50%;
-   border: 1px solid dodgerblue;
-   color: dodgerblue;
-   text-align: center;
-   font-weight: bold;
-}
-
-.zoom-controls {
-
 }
 
