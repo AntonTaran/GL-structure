@@ -74,7 +74,7 @@ var chart_config = {
     }
   },
   nodeStructure: {
-    image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+    image: "./src/assets/image/Nataliya.jpeg",
     text: {
       desc: 'i',
       name: {
@@ -86,7 +86,7 @@ var chart_config = {
     },
     children: [
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        image: "./src/assets/image/Nataliya.jpeg",
         text: {
           desc: 'i',
           name: {
@@ -100,7 +100,7 @@ var chart_config = {
         collapsed: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -113,7 +113,7 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -126,7 +126,7 @@ var chart_config = {
             children: [{}, {}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -138,7 +138,7 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -150,7 +150,7 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -162,7 +162,7 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -174,7 +174,7 @@ var chart_config = {
             children: [{}, {}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -187,7 +187,7 @@ var chart_config = {
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        image: "./src/assets/image/Nataliya.jpeg",
         text: {
           desc: 'i',
           name: {
@@ -200,7 +200,7 @@ var chart_config = {
         collapsed: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -215,7 +215,7 @@ var chart_config = {
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        image: "./src/assets/image/Nataliya.jpeg",
         text: {
           desc: 'i',
           name: {
@@ -229,7 +229,7 @@ var chart_config = {
         collapsed: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -245,7 +245,7 @@ var chart_config = {
             ]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -256,7 +256,7 @@ var chart_config = {
             }
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -269,7 +269,7 @@ var chart_config = {
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        image: "./src/assets/image/Nataliya.jpeg",
         text: {
           desc: 'i',
           name: {
@@ -282,7 +282,7 @@ var chart_config = {
         collapsed: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -295,7 +295,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -308,7 +308,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -321,7 +321,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -339,7 +339,7 @@ var chart_config = {
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        image: "./src/assets/image/Nataliya.jpeg",
         text: {
           desc: 'i',
           name: {
@@ -352,7 +352,7 @@ var chart_config = {
         collapsed: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -365,7 +365,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -378,7 +378,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -391,7 +391,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -406,7 +406,7 @@ var chart_config = {
         ]
       },
       {
-        image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+        image: "./src/assets/image/Nataliya.jpeg",
         text: {
           desc: 'i',
           name: {
@@ -419,7 +419,7 @@ var chart_config = {
         collapsed: true,
         children: [
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -432,7 +432,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -445,7 +445,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -458,7 +458,7 @@ var chart_config = {
             drawLineThrough: true
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
@@ -472,7 +472,7 @@ var chart_config = {
             children: [{}]
           },
           {
-            image: "https://portal-apps.globallogic.com/avatar/api/v2/employee/c78a706e9134/last.jpeg?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiI5ZWZhMjk4NTg3M2EiLCJiIjpudWxsLCJleHAiOjE1NDM5MjAyMDYsImlhdCI6MTU0MzgzMzgwNiwiaWQiOiI3MDA3MWM0N2ZkOWIiLCJqdGkiOiJQRHp0Yk1LQTBLU2I4XzRNb1pWVU53IiwibmJmIjoxNTQzODMzODA2fQ.UfPl-GZsKgTe37r2YkGKYvdZWGiROhDYX0fSTMnwA-dXaGplgVZhtYZNRy68vn6eVarNEn0uZ6IsokDH9E3LSOIjdED0jIp4n7kmQ2wF0Y8Zn6uH1AwPpNM50mc4Lc-_d0NL9xGH0etf4d45d9il6xEJquukFZTpFmfbsfTXKQP8xV9sZlzf5eIutsLzJY8v-nZqBagHDNRh3MczPaWEm7H_r-1zeEGnWK6wrNo8fLGL6FUoJmRySi6yhjJk-1gRut3UH2d_rMaIzFJ6V-S5oGuOCyx4kyxDHe49ZJGM92HIUyjPKjxRDLFirqZjsdFa2ZdlCnkgxM_pN7-hwRjigw?size=320",
+            image: "./src/assets/image/Nataliya.jpeg",
             text: {
               desc: 'i',
               name: {
