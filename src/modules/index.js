@@ -6,6 +6,7 @@ const svg1 = document.getElementsByTagName('svg');
 const wrapper = document.querySelector('#collapsable-example');
 const closeButton = document.querySelector('.close-btn');
 const container = document.querySelector('.container');
+const modalOverlay = document.querySelector('.modal-overlay');
 let tree;
 
 function increaseScale() {
@@ -36,36 +37,43 @@ class Modal {
 //    Modal.showAdditionalInfoModal();
   }
 
-  showAdditionalInfoModal(selectedElement) {
+  onPersonTileClick(selectedElement) {
+    this.openModal();
     this.updateModalContent(selectedElement);
   }
 
-  updateModalContent(selectedElement) {
-//    this.modalInfo.MODAL_INFO_PROJECTS.remove();
-//    console.log(this.modalInfo.MODAL_INFO_PROJECTS);
+  openModal() {
+    this.modalInfo.MODAL_HTML[0].classList.add('additional-info-modal--open');
+    this.modalInfo.MODAL_OVERLAY[0].classList.add('modal-overlay--open');
+  }
 
+  updateModalContent(selectedElement) {
+    // Clear container with links
+    this.modalInfo.MODAL_INFO_PROJECTS[0].innerHTML = '';
+    // Set values for title and post
     this.modalInfo.MODAL_INFO_TITLE[0].innerHTML = selectedElement.text.name;
     this.modalInfo.MODAL_INFO_POST[0].innerHTML = selectedElement.additionalInfo.post;
 
+    // Create project links
     if (selectedElement.additionalInfo.projects) {
-      let links = [];
-
       selectedElement.additionalInfo.projects.forEach((project) => {
-
         const projectLink = document.createElement('a');
+
         projectLink.className = 'project-link';
         projectLink.innerHTML = `<a href="${project.url}">${project.name}</a>`;
 
-        links.push();
-
-        some.appendChild(projectLink);
+        if (this.modalInfo.MODAL_INFO_PROJECTS) {
+          this.modalInfo.MODAL_INFO_PROJECTS[0].appendChild(projectLink);
+        } else {
+          console.log('Projects link container is absent!!!!');
+        }
       })
     }
   }
 
   closeModal(event) {
-//    console.log(this.modalInfo.MODAL_INFO_PROJECTS);
-//    this.modalInfo.MODAL_INFO_PROJECTS.remove();
+    this.modalInfo.MODAL_HTML[0].classList.remove('additional-info-modal--open');
+    this.modalInfo.MODAL_OVERLAY[0].classList.remove('modal-overlay--open');
   }
 }
 
@@ -73,7 +81,8 @@ const modal = new Modal({
   MODAL_HTML: document.getElementsByClassName('additional-info-modal'),
   MODAL_INFO_TITLE: document.getElementsByClassName('modal-title'),
   MODAL_INFO_POST: document.getElementsByClassName('modal-post-info'),
-//  MODAL_INFO_PROJECTS: document.querySelector('.modal-project-info')
+  MODAL_INFO_PROJECTS: document.getElementsByClassName('modal-project-info'),
+  MODAL_OVERLAY: document.getElementsByClassName('modal-overlay'),
 });
 
 wrapper.addEventListener('click', ((event) => {
@@ -91,10 +100,13 @@ function getAdditionalInfo(event) {
     return item.HTMLid == event.target.id;
   });
 
-//  showAdditionalInfoModal(selectedElement);
-  modal.showAdditionalInfoModal(selectedElement);
-
+  modal.onPersonTileClick(selectedElement);
 }
+
+modalOverlay.addEventListener('click', ((event) => {
+  modal.closeModal(event);
+  console.log('cdscds');
+}));
 
 tree = new Treant(config.chart_config);
 
