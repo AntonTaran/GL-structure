@@ -1,4 +1,37 @@
-var chart_config = {
+
+
+const svg1 = document.getElementsByTagName('svg');
+const wrapper = document.querySelector('#collapsable-example');
+const closeButton = document.querySelector('.close-btn');
+const container = document.querySelector('.container');
+const modalOverlay = document.querySelector('.modal-overlay');
+let tree;
+
+function setPersonId() {
+  persons.map((el, ind) => el.HTMLid = ind + 1);
+}
+
+function combineNestedNodes() {
+  setPersonId();
+  let sortedNodes = [];
+
+  for (let i = 0; i < persons.length; i++) {
+    let element = persons[i];
+
+    for (let j = i; j < persons.length; j++) {
+      let element2 = persons[j];
+
+      if (element.name === element2.par) {
+        element.children.push(element2);
+      }
+    }
+    sortedNodes.push(element);
+  }
+
+  return sortedNodes[0];
+}
+
+let chart_config = {
   chart: {
     container: "#collapsable-example",
     animateOnInit: true,
@@ -28,435 +61,11 @@ var chart_config = {
       connectorsSpeed: 100
     }
   },
-  nodeStructure: {
-    image: "./src/assets/image/Nataliya.jpeg",
-    text: {
-      desc: 'i',
-      name: {
-        val: "Nataliya Siromakha",
-        href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-        target: "_blank"
-      },
-      nodeAlign: 'BOTTOM',
-    },
-    children: [
-      {
-        image: "./src/assets/image/Nataliya.jpeg",
-        text: {
-          desc: 'i',
-          name: {
-            val: "Iulia Izonina",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-        },
-//        stackChildren: true,
-//        childrenDropLevel: 2,
-        collapsed: true,
-        children: [
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Some longnameeeeeee",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            children: [{}]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            children: [{}, {}]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            children: [{}]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            children: [{}]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            children: [{}]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Iulia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            children: [{}, {}]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Iuldcdscsia Izonina",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-          },
-        ]
-      },
-      {
-        image: "./src/assets/image/Nataliya.jpeg",
-        text: {
-          desc: 'i',
-          name: {
-            val: "Igor Rudko",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-        },
-        stackChildren: true,
-        collapsed: true,
-        children: [
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-        ]
-      },
-      {
-        image: "./src/assets/image/Nataliya.jpeg",
-        text: {
-          desc: 'i',
-          name: {
-            val: "Viktor Matusov",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-        },
-        stackChildren: true,
-        drawLineThrough: true,
-        collapsed: true,
-        children: [
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Alexander Lanin",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true,
-            children: [
-              {}
-            ]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Vitalii Litvin",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            }
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Vitalii Tilinskii",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            }
-          },
-        ]
-      },
-      {
-        image: "./src/assets/image/Nataliya.jpeg",
-        text: {
-          desc: 'i',
-          name: {
-            val: "Yevgenii Kolometskiy",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-        },
-        stackChildren: true,
-        collapsed: true,
-        children: [
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true,
-            children: [{
-              children: [{}]
-            }]
-          },
-        ]
-      },
-      {
-        image: "./src/assets/image/Nataliya.jpeg",
-        text: {
-          desc: 'i',
-          name: {
-            val: "Dmytro Levitskiy (US)",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-        },
-        stackChildren: true,
-        collapsed: true,
-        children: [
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true,
-          },
-        ]
-      },
-      {
-        image: "./src/assets/image/Nataliya.jpeg",
-        text: {
-          desc: 'i',
-          name: {
-            val: "Denys Bratchuk",
-            href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-            target: "_blank"
-          },
-        },
-        stackChildren: true,
-        collapsed: true,
-        children: [
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            drawLineThrough: true,
-            children: [{}]
-          },
-          {
-            image: "./src/assets/image/Nataliya.jpeg",
-            text: {
-              desc: 'i',
-              name: {
-                val: "Liliya Kondratieva",
-                href: 'https://portal.globallogic.com/user/profile/nataliya.siromakha/c78a706e9134/general',
-                target: "_blank"
-              },
-            },
-            stackChildren: true,
-            children: [{}]
-          },
-        ]
-      },
-    ]
-  }
+  nodeStructure: combineNestedNodes()
 };
 
-export {chart_config};
-import '../assets/scss/index.scss';
-import * as config from './chart-config';
-
-var svg1 = document.getElementsByTagName('svg');
-var wrapper = document.querySelector('#collapsable-example');
-var container = document.querySelector('.container');
-
-var tree;
-
 function increaseScale() {
-  var scale = 0;
+  let scale = 0;
 
   return function () {
     scale = scale + (1 / 10);
@@ -464,8 +73,8 @@ function increaseScale() {
   }
 }
 
-var counter = increaseScale();
-var currentZoom;
+let counter = increaseScale();
+let currentZoom;
 
 function scaleOnCollapse(x) {
   console.log(Array.from(svg1)[0].getBoundingClientRect().right);
@@ -477,16 +86,81 @@ function scaleOnCollapse(x) {
   }
 }
 
-tree = new Treant(config.chart_config);
-
-class Class {
-  constructor(props) {
-    console.log(props);
-
+class Modal {
+  constructor(modalInfo) {
+    this.modalInfo = modalInfo;
+//    Modal.showAdditionalInfoModal();
   }
 
+  onPersonTileClick(selectedElement) {
+    this.openModal();
+    this.updateModalContent(selectedElement);
+  }
+
+  openModal() {
+    this.modalInfo.MODAL_HTML[0].classList.add('additional-info-modal--open');
+    this.modalInfo.MODAL_OVERLAY[0].classList.add('modal-overlay--open');
+  }
+
+  updateModalContent(selectedElement) {
+    // Clear container with links
+    this.modalInfo.MODAL_INFO_PROJECTS[0].innerHTML = '';
+    // Set values for title and post
+    this.modalInfo.MODAL_INFO_TITLE[0].innerHTML = selectedElement.text.name;
+    this.modalInfo.MODAL_INFO_POST[0].innerHTML = selectedElement.additionalInfo.post;
+
+    // Create project links
+    if (selectedElement.additionalInfo.projects) {
+      selectedElement.additionalInfo.projects.forEach((project) => {
+        const projectLink = document.createElement('a');
+
+        projectLink.className = 'project-link';
+        projectLink.innerHTML = `<a href="${project.url}">${project.name}</a>`;
+
+        if (this.modalInfo.MODAL_INFO_PROJECTS) {
+          this.modalInfo.MODAL_INFO_PROJECTS[0].appendChild(projectLink);
+        } else {
+          console.log('Projects link container is absent!!!!');
+        }
+      })
+    }
+  }
+
+  closeModal(event) {
+    this.modalInfo.MODAL_HTML[0].classList.remove('additional-info-modal--open');
+    this.modalInfo.MODAL_OVERLAY[0].classList.remove('modal-overlay--open');
+  }
 }
 
-let a = new Class('aaaaa');
+const modal = new Modal({
+  MODAL_HTML: document.getElementsByClassName('additional-info-modal'),
+  MODAL_INFO_TITLE: document.getElementsByClassName('modal-title'),
+  MODAL_INFO_POST: document.getElementsByClassName('modal-post-info'),
+  MODAL_INFO_PROJECTS: document.getElementsByClassName('modal-project-info'),
+  MODAL_OVERLAY: document.getElementsByClassName('modal-overlay'),
+});
 
-export {a}
+wrapper.addEventListener('click', ((event) => {
+  if (Array.from(event.target.classList).indexOf('node') !== -1) {
+    getAdditionalInfo(event);
+  }
+}));
+
+closeButton.addEventListener('click', ((event) => {
+  modal.closeModal(event);
+}));
+
+function getAdditionalInfo(event) {
+  const selectedElement = persons.find((item) => {
+    return item.HTMLid == event.target.id;
+  });
+
+  modal.onPersonTileClick(selectedElement);
+}
+
+modalOverlay.addEventListener('click', ((event) => {
+  modal.closeModal(event);
+}));
+
+tree = new Treant(chart_config);
+

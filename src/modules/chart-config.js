@@ -32,7 +32,7 @@ let some = {
     image: "./src/assets/image/Nataliya.jpeg",
     HTMLclass: 'person-tile',
 //    HTMLid: 'cdsc',
-      additionalInfo: {},
+    additionalInfo: {},
 
     text: {
       name: {
@@ -607,123 +607,120 @@ let some = {
   }
 };
 
-let config = {
-  container: "#collapsable-example",
-  animateOnInit: true,
-  callback: {
-    onToggleCollapseFinished: function (e) {
+let config, parent_n, ch_1, ch_2, ch_3, ch_4;
+
+let chart = [
+  config = {
+    container: "#collapsable-example",
+    animateOnInit: true,
+    callback: {
+      onToggleCollapseFinished: function (e) {
 //        scaleOnCollapse(e.X);
+      },
     },
-  },
-  node: {
-    collapsable: true
-  },
-  levelSeparation: 30,
-  siblingSeparation: 10,
-  subTeeSeparation: 15,
-  nodeAlign: 'LEFT',
-  connectors: {
-    type: 'step',
-    style: {
-      'stroke': 'grey',
-      'stroke-width': 4,
+    node: {
+      collapsable: true
+    },
+    levelSeparation: 30,
+    siblingSeparation: 10,
+    subTeeSeparation: 15,
+    nodeAlign: 'LEFT',
+    connectors: {
+      type: 'step',
+      style: {
+        'stroke': 'grey',
+        'stroke-width': 4,
+      }
+    },
+    animation: {
+      nodeAnimation: "linear ",
+      nodeSpeed: 500,
+      connectorsAnimation: "linear",
+      connectorsSpeed: 100
     }
   },
-  animation: {
-    nodeAnimation: "linear ",
-    nodeSpeed: 500,
-    connectorsAnimation: "linear",
-    connectorsSpeed: 100
-  }
-};
-let parent_node = {
-  image: "./src/assets/image/Nataliya.jpeg",
-  HTMLclass: 'person-tile',
-  additionalInfo: {
-    post: 'Director',
-    projects: [
-      {name: 'Hilti', url: '#'},
-      {name: 'Rimage', url: '#'}
-    ],
+  parent_n = {
+    image: "./src/assets/image/Nataliya.jpeg",
+    HTMLclass: 'person-tile',
+    additionalInfo: {
+      post: 'Director',
+      projects: [
+        {name: 'Hilti', url: '#'},
+        {name: 'Rimage', url: '#'}
+      ],
+    },
+    text: {
+      name: "Nataliya Siromakha",
+      nodeAlign: 'BOTTOM',
+    },
   },
-  text: {
-    name: "Nataliya Siromakha",
-    nodeAlign: 'BOTTOM',
+  ch_1 = {
+    parent: parent_n,
+    image: "./src/assets/image/Nataliya.jpeg",
+    HTMLclass: 'person-tile',
+    additionalInfo: {
+      post: 'Manager',
+      projects: [
+        {name: 'Medavant', url: '#'},
+        {name: 'Some else', url: '#'}
+      ],
+    },
+    text: {
+      name: "Iulia Izonina",
+      nodeAlign: 'BOTTOM',
+    },
   },
-};
-let first_child = {
-  parent: parent_node,
-  image: "./src/assets/image/Nataliya.jpeg",
-  HTMLclass: 'person-tile',
-  additionalInfo: {
-    post: 'Manager',
-    projects: [
-      {name: 'Medavant', url: '#'},
-      {name: 'Some else', url: '#'}
-    ],
+  ch_2 = {
+    parent: parent_n,
+    image: "./src/assets/image/Nataliya.jpeg",
+    HTMLclass: 'person-tile',
+    additionalInfo: {
+      post: 'God',
+      projects: [
+        {name: 'Sofos', url: '#'},
+        {name: 'Rimage', url: '#'}
+      ],
+    },
+    text: {
+      name: "Igor Rudko",
+      nodeAlign: 'BOTTOM',
+    },
+    stackChildren: true,
   },
-  text: {
-    name: "Iulia Izonina",
-    nodeAlign: 'BOTTOM',
+  ch_3 = {
+    parent: parent_n,
+    image: "./src/assets/image/Nataliya.jpeg",
+    HTMLclass: 'person-tile',
+    additionalInfo: {
+      post: 'God',
+      projects: [
+        {name: 'Sofos', url: '#'},
+        {name: 'Rimage', url: '#'}
+      ],
+    },
+    text: {
+      name: "Nataliya Siromakha",
+      nodeAlign: 'BOTTOM',
+    },
+    stackChildren: true,
   },
-};
-let second_child = {
-  parent: parent_node,
-  image: "./src/assets/image/Nataliya.jpeg",
-  HTMLclass: 'person-tile',
-  additionalInfo: {
-    post: 'God',
-    projects: [
-      {name: 'Sofos', url: '#'},
-      {name: 'Rimage', url: '#'}
-    ],
+  ch_4 = {
+    parent: ch_3,
+    image: "./src/assets/im age/Nataliya.jpeg",
+    HTMLclass: 'person-tile',
+    additionalInfo: {
+      post: 'God',
+      projects: [],
+    },
+    text: {
+      name: "Nataliya Siromakha",
+      nodeAlign: 'BOTTOM',
+    },
+    stackChildren: true,
   },
-  text: {
-    name: "Igor Rudko",
-    nodeAlign: 'BOTTOM',
-  },
-  stackChildren: true,
-};
-
-let third_child = {
-  parent: second_child,
-  image: "./src/assets/image/Nataliya.jpeg",
-  HTMLclass: 'person-tile',
-  additionalInfo: {
-    post: 'God',
-    projects: [
-      {name: 'Sofos', url: '#'},
-      {name: 'Rimage', url: '#'}
-    ],
-  },
-  text: {
-    name: "Nataliya Siromakha",
-    nodeAlign: 'BOTTOM',
-  },
-  stackChildren: true,
-};
-
-let fourth_child = {
-  parent: third_child,
-  image: "./src/assets/image/Nataliya.jpeg",
-  HTMLclass: 'person-tile',
-  additionalInfo: {
-    post: 'God',
-    projects: [],
-  },
-  text: {
-    name: "Nataliya Siromakha",
-    nodeAlign: 'BOTTOM',
-  },
-  stackChildren: true,
-};
-
-let chart_config = [
-  config, parent_node,
-  first_child, second_child,
-  third_child, fourth_child
 ];
 
+let chart_config = chart;
 chart_config.map((el, ind) => el.HTMLid = ind);
 
 export {chart_config};

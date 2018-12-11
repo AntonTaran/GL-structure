@@ -1,6 +1,8 @@
 
 * {
-   font-family: 'Montserrat', sans-serif;
+   font-family: Helvetica, sans-serif;
+   box-sizing: border-box;
+   color: #041515;
 }
 
 a {
@@ -12,4 +14,24 @@ a {
 ul {
    list-style-type: none;
    padding-left: 0;
+}
+
+button {
+   border: none;
+}
+
+button:hover,
+button:focus {
+   background: #eee;
+}
+
+button:focus {
+   outline: none;
+   border: none;
+}
+
+button:active {
+   outline: none;
+   border: none;
+   transform: scale(0.99);
 }
