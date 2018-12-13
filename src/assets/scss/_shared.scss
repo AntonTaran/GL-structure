@@ -1,0 +1,17 @@
+.btn {
+   border-radius: 3px;
+   background-color: #3597dc;
+   color: #fff;
+   font-weight: bold;
+   font-size: 1.13rem;
+   padding: .65rem 1.1rem;
+   cursor: pointer;
+   letter-spacing: normal;
+   
+   &--transparent {
+      background-color: transparent;
+      color: #3597dc;
+      padding: 0;
+      font-weight: normal;
+   }
+}

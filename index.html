@@ -6,18 +6,25 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.css">
 </head>
 <body>
-<main class="wrapper">
+<main style="margin-top: 100px" class="wrapper">
+   
+   <div class="section-description-holder">
+      <h2 class="section-title">Company Structure</h2>
+      <p class="section-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+         Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+         of type and scrambled it to make a type specimen book. </p>
+   </div>
    
    <div class="container">
       <div class="modal-overlay"></div>
       <div class="zoom-controls">
          <button class="zoom-control decrease-zoom"></button>
          <button class="zoom-control increase-zoom"></button>
-         <button class="zoom-control fullscreen-mode"></button>
+         <!--<button class="zoom-control fullscreen-mode"></button>-->
       </div>
       <div id="body"></div>
       <div class="chart" id="collapsable-example"></div>
-   
+      
       <div class="additional-info-modal">
          <div class="modal-header">
             <div class="title">Info</div>
@@ -26,22 +33,36 @@
          
          <div class="modal-content">
             <div class="image-holder"></div>
-            <div class="personal-info">
-               <h4 class="title name"></h4>
-               <div class="position"></div>
-            </div>
-   
-            <div class="personal-info">
-               <h4 class="title name"></h4>
-               <div class="projects"></div>
+            <div class="personal-info-holder">
+               <div class="personal-info">
+                  <h4 class="title person-name"></h4>
+                  <div class="description person-post"></div>
+               </div>
+               
+               <div class="personal-info">
+                  <h4 class="title">Projects</h4>
+                  <div class="description person-projects"></div>
+               </div>
             </div>
          </div>
          
-         <div class="modal-post-info"></div>
-         <div class="modal-project-info"></div>
+         <div class="modal-footer">
+            <button class="btn btn--transparent modal-cancel-btn">Cancel</button>
+            <a href="#" target="_blank" class="btn modal-link-btn">View GLO Profile</a>
+         </div>
       </div>
    </div>
-
+   
+   <section class="section">
+      <div class="section-description-holder">
+         <h2 class="section-title">Functional Divisions Heads</h2>
+         <p class="section-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+            Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book. </p>
+      </div>
+      
+      <div class="single-tiles-section division-heads"></div>
+   </section>
 </main>
 
 <script type="text/javascript" src='https://d3js.org/d3.v3.min.js'></script>

@@ -1,15 +1,14 @@
 .container {
    position: relative;
    height: 100%;
+   margin-bottom: 3.75rem;
 }
 
 #collapsable-example {
    width: 100%;
-   height: 100%;
    transform-origin: 0 0;
    overflow: visible !important;
    transition: transform .2s ease;
-   background-color: #fff;
 }
 
 .person-tile {
@@ -20,15 +19,16 @@
    border-radius: 10px;
    box-shadow: 0 3px 6px 0 #72849a;
    cursor: pointer;
-   
-   img {
-      display: block;
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
+   &:not(.division-head-tile) {
+      img {
+         display: block;
+         width: 80px;
+         height: 80px;
+         margin: 0 auto 15px;
+         border-radius: 50%;
+      }
    }
-   
+
    .node-name {
       display: block;
       margin: 0 0 .7rem;
@@ -65,37 +65,38 @@
       stroke: #ccc;
       stroke-width: 1.5px;
    }
+   
+   .division-head__name {
+      margin-bottom: 3px;
+   }
+   
+   .division-head__description {
+      color: $main-text-color;
+      margin: 0;
+   }
 }
 
 .zoom-controls {
-   position: absolute;
-   top: 2rem;
-   left: 2rem;
    display: inline-flex;
-   z-index: 1;
    
    .zoom-control {
       position: relative;
-      width: 25px;
-      height: 25px;
+      width: 35px;
+      height: 35px;
       line-height: 20px;
       text-align: center;
       background-color: #444;
       font-size: 1.2rem;
       cursor: pointer;
       user-select: none;
-      transition: background-color .2s ease;
+      transition: background-color .2s ease, opacity .2s ease;
       
       &:hover {
          background-color: transparentize(#444, .2);
       }
       
-      &:active {
-         background-color: darken(#444, 20)
-      }
-      
       & + .zoom-control {
-         margin-left: 5px;
+         margin-left: 10px;
       }
       
       &--disabled {
@@ -168,8 +169,8 @@
    bottom: 10px;
    left: 50%;
    transform: translateX(-50%) rotateX(180deg);
-   width: 20px;
-   height: 20px;
+   width: 40px;
+   height: 40px;
    cursor: pointer;
    border: none;
    transition: transform .3s ease;

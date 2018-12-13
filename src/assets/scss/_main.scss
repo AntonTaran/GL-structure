@@ -1,3 +1,21 @@
+
 .wrapper {
    position: relative;
+   padding: 0 3rem;
+}
+.section-description-holder {
+   max-width: 720px;
+   margin-bottom: 2.5rem;
+}
+
+.section-title {
+   margin: 0 0 1.9rem;
+}
+
+.section-description {
+   margin: 0;
+   
+   & + .section-description {
+      margin-top: 1.5rem;
+   }
 }

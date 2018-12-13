@@ -1,14 +1,18 @@
-
 * {
    font-family: Helvetica, sans-serif;
    box-sizing: border-box;
-   color: #041515;
+   color: $main-text-color;
 }
 
 a {
    display: block;
    text-decoration: none;
    color: dodgerblue;
+}
+
+
+a:active {
+   opacity: .9;
 }
 
 ul {
@@ -20,10 +24,6 @@ button {
    border: none;
 }
 
-button:hover,
-button:focus {
-   background: #eee;
-}
 
 button:focus {
    outline: none;
@@ -33,5 +33,16 @@ button:focus {
 button:active {
    outline: none;
    border: none;
-   transform: scale(0.99);
+   opacity: .9;
+}
+
+h2 {
+   font-size: 3rem;
+   font-weight: normal;
+   line-height: 1.21;
+}
+
+p {
+   line-height: 1.88;
+   letter-spacing: 0.3px;
 }
