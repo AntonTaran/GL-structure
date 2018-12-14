@@ -1,0 +1,88 @@
+$division-heads-color: #ff6602;
+$technology-leads-color: #99cc33;
+$practices-leads-color: #33cccc;
+
+.united-tiles-section {
+   display: table;
+   width: 100%;
+   min-height: 340px;
+   height: auto;
+   margin-bottom: 3rem;
+}
+
+.section-wrapper {
+   display: table-row;
+   height: 100%;
+}
+
+.united-tiles-section {
+   
+   .tile-wrapper {
+      padding: 0 2rem;
+      margin-bottom: 3.125rem;
+      box-sizing: content-box;
+   }
+   
+   &__title-holder, &__tiles-holder {
+      display: table-cell;
+   }
+   
+   &__title-holder {
+      position: relative;
+      width: 30px;
+      height: 100%;
+      border-radius: 5px 0 0 5px;
+      overflow: hidden;
+      
+      .strategic-focus-area & {
+         background-color: $division-heads-color;
+      }
+      
+      .technology-leads & {
+         background-color: $technology-leads-color;
+      }
+      
+      .practices-leads & {
+         background-color: $practices-leads-color;
+      }
+      
+      .section-title {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%) rotate(-90deg);
+         font-size: 1.125rem;
+         white-space: nowrap;
+         color: #fff;
+      }
+   }
+   
+   &__tiles-holder {
+      display: flex;
+      flex-flow: row wrap;
+      padding: 2.8rem 3.75rem;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+   }
+   
+   &__image-holder {
+      .strategic-focus-area & {
+         border-color: $division-heads-color;
+      }
+   
+      .technology-leads & {
+         border-color: $technology-leads-color;
+      }
+   
+      .practices-leads & {
+         border-color: $practices-leads-color;
+      }
+   }
+   
+   .tile-name {
+      font-weight: normal;
+   }
+   
+   .tile-desc {
+      font-weight: bold;
+   }
+}

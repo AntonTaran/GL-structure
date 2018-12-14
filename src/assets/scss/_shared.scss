@@ -15,3 +15,115 @@
       font-weight: normal;
    }
 }
+
+.tile {
+   
+   .tile-image-holder {
+      border-radius: 50%;
+      overflow: hidden;
+   }
+   
+   .node-name, .tile-name {
+      display: block;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: bold;
+      color: #3597dc;
+   }
+   
+   img, .node-name, .tile-name {
+      pointer-events: none;
+   }
+   
+   p:last-child {
+      margin-bottom: 0;
+   }
+   
+   .empty-image-state {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #999;
+   }
+   
+   // Size
+   &--small {
+      width: 160px;
+      height: 216px;
+      padding: 30px .7rem 1rem;
+      text-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+   
+      .tile-image-holder {
+         width: 80px;
+         height: 80px;
+         margin: 0 auto 1.125rem;
+      }
+      
+      img {
+         width: 100%;
+         height: 100%;
+      }
+      
+      .node-name, .tile-name {
+         margin: 0 0 .4rem;
+         line-height: 1.19;
+      }
+   
+      .name-desc, .tile-desc {
+         font-weight: bold;
+         margin: 0 0 .4rem;
+         line-height: 1.19;
+      }
+   }
+   
+   &--big {
+      width: 180px;
+      height: 100%;
+      
+      .tile-image-holder {
+         width: 150px;
+         height: 150px;
+         margin: 0 auto 1.125rem;
+         border: 3px solid grey;
+      }
+   
+      .node-name, .tile-name {
+         margin: 0 0 .4rem;
+         font-size: 1.125rem;
+         line-height: 1.22;
+         text-align: center;
+      }
+      
+      .name-desc, .tile-desc {
+         margin: 0 0 .4rem;
+         font-size: 1.125rem;
+         line-height: 1.22;
+         text-align: center;
+      }
+   }
+   
+   // Type
+   &--framed {
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+   }
+   
+   &--transparent {
+      .tile-image-holder, .tile-name, .tile-description {
+         pointer-events: none;
+      }
+   }
+}
+
+.node {
+   &.tile--small {
+      img {
+         width: 80px;
+         height: 80px;
+         margin: 0 auto 15px;
+         border-radius: 50%;
+      }
+   }
+}

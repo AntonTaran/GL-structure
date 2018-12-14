@@ -30,7 +30,7 @@ let some = {
   },
   nodeStructure: {
     image: "./src/assets/image/Nataliya.jpeg",
-    HTMLclass: 'person-tile',
+    HTMLclass: 'tile',
 //    HTMLid: 'cdsc',
     additionalInfo: {},
 
@@ -45,7 +45,7 @@ let some = {
     children: [
       {
         image: "./src/assets/image/Nataliya.jpeg",
-        HTMLclass: 'person-tile',
+        HTMLclass: 'tile',
         text: {
           name: {
             val: "Iulia Izonina",
@@ -59,7 +59,7 @@ let some = {
         children: [
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Some longnameeeeeee",
@@ -70,7 +70,7 @@ let some = {
             stackChildren: true,
             children: [{
               image: "./src/assets/image/Nataliya.jpeg",
-              HTMLclass: 'person-tile',
+              HTMLclass: 'tile',
               text: {
                 name: {
                   val: "Iulia Izonina",
@@ -85,7 +85,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Iulia Izonina",
@@ -97,7 +97,7 @@ let some = {
             children: [
               {
                 image: "./src/assets/image/Nataliya.jpeg",
-                HTMLclass: 'person-tile',
+                HTMLclass: 'tile',
                 text: {
                   name: {
                     val: "Iulia Izonina",
@@ -108,7 +108,7 @@ let some = {
               },
               {
                 image: "./src/assets/image/Nataliya.jpeg",
-                HTMLclass: 'person-tile',
+                HTMLclass: 'tile',
                 text: {
                   name: {
                     val: "Iulia Izonina",
@@ -121,7 +121,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Iulia Izonina",
@@ -131,7 +131,7 @@ let some = {
             },
             children: [{
               image: "./src/assets/image/Nataliya.jpeg",
-              HTMLclass: 'person-tile',
+              HTMLclass: 'tile',
               text: {
                 name: {
                   val: "Iulia Izonina",
@@ -146,7 +146,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Iulia Izonina",
@@ -156,7 +156,7 @@ let some = {
             },
             children: [{
               image: "./src/assets/image/Nataliya.jpeg",
-              HTMLclass: 'person-tile',
+              HTMLclass: 'tile',
               text: {
                 name: {
                   val: "Iulia Izonina",
@@ -171,7 +171,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Iulia Izonina",
@@ -181,7 +181,7 @@ let some = {
             },
             children: [{
               image: "./src/assets/image/Nataliya.jpeg",
-              HTMLclass: 'person-tile',
+              HTMLclass: 'tile',
               text: {
                 name: {
                   val: "Iulia Izonina",
@@ -196,7 +196,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Iulia Izonina",
@@ -207,7 +207,7 @@ let some = {
             children: [
               {
                 image: "./src/assets/image/Nataliya.jpeg",
-                HTMLclass: 'person-tile',
+                HTMLclass: 'tile',
                 text: {
                   name: {
                     val: "Iulia Izonina",
@@ -221,7 +221,7 @@ let some = {
               },
               {
                 image: "./src/assets/image/Nataliya.jpeg",
-                HTMLclass: 'person-tile',
+                HTMLclass: 'tile',
                 text: {
                   name: {
                     val: "Iulia Izonina",
@@ -237,7 +237,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Iuldcdscsia Izonina",
@@ -250,7 +250,7 @@ let some = {
       },
       {
         image: "./src/assets/image/Nataliya.jpeg",
-        HTMLclass: 'person-tile',
+        HTMLclass: 'tile',
         text: {
           name: {
             val: "Igor Rudko",
@@ -263,7 +263,7 @@ let some = {
         children: [
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -278,7 +278,7 @@ let some = {
       },
       {
         image: "./src/assets/image/Nataliya.jpeg",
-        HTMLclass: 'person-tile',
+        HTMLclass: 'tile',
         text: {
           name: {
             val: "Viktor Matusov",
@@ -292,7 +292,7 @@ let some = {
         children: [
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Alexander Lanin",
@@ -305,7 +305,7 @@ let some = {
             children: [
               {
                 image: "./src/assets/image/Nataliya.jpeg",
-                HTMLclass: 'person-tile',
+                HTMLclass: 'tile',
                 text: {
                   name: {
                     val: "Iulia Izonina",
@@ -321,7 +321,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Vitalii Litvin",
@@ -332,7 +332,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Vitalii Tilinskii",
@@ -345,7 +345,7 @@ let some = {
       },
       {
         image: "./src/assets/image/Nataliya.jpeg",
-        HTMLclass: 'person-tile',
+        HTMLclass: 'tile',
         text: {
           name: {
             val: "Yevgenii Kolometskiy",
@@ -358,7 +358,7 @@ let some = {
         children: [
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -371,7 +371,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -384,7 +384,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -397,7 +397,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -409,7 +409,7 @@ let some = {
             drawLineThrough: true,
             children: [{
               image: "./src/assets/image/Nataliya.jpeg",
-              HTMLclass: 'person-tile',
+              HTMLclass: 'tile',
               text: {
                 name: {
                   val: "Iulia Izonina",
@@ -423,7 +423,7 @@ let some = {
               children: [
                 {
                   image: "./src/assets/image/Nataliya.jpeg",
-                  HTMLclass: 'person-tile',
+                  HTMLclass: 'tile',
                   text: {
                     name: {
                       val: "Iulia Izonina",
@@ -442,7 +442,7 @@ let some = {
       },
       {
         image: "./src/assets/image/Nataliya.jpeg",
-        HTMLclass: 'person-tile',
+        HTMLclass: 'tile',
         text: {
           name: {
             val: "Dmytro Levitskiy (US)",
@@ -455,7 +455,7 @@ let some = {
         children: [
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -468,7 +468,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -481,7 +481,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -494,7 +494,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -509,7 +509,7 @@ let some = {
       },
       {
         image: "./src/assets/image/Nataliya.jpeg",
-        HTMLclass: 'person-tile',
+        HTMLclass: 'tile',
         text: {
           name: {
             val: "Denys Bratchuk",
@@ -522,7 +522,7 @@ let some = {
         children: [
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -535,7 +535,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -548,7 +548,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -561,7 +561,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -573,7 +573,7 @@ let some = {
             drawLineThrough: true,
             children: [{
               image: "./src/assets/image/Nataliya.jpeg",
-              HTMLclass: 'person-tile',
+              HTMLclass: 'tile',
               text: {
                 name: {
                   val: "Iulia Izonina",
@@ -588,7 +588,7 @@ let some = {
           },
           {
             image: "./src/assets/image/Nataliya.jpeg",
-            HTMLclass: 'person-tile',
+            HTMLclass: 'tile',
             text: {
               name: {
                 val: "Liliya Kondratieva",
@@ -598,7 +598,7 @@ let some = {
             },
             stackChildren: true,
 //            children: [{
-//              HTMLclass: 'person-tile',
+//              HTMLclass: 'tile',
 //            }]
           },
         ]
@@ -641,7 +641,7 @@ let chart = [
   },
   parent_n = {
     image: "./src/assets/image/Nataliya.jpeg",
-    HTMLclass: 'person-tile',
+    HTMLclass: 'tile',
     additionalInfo: {
       post: 'Director',
       projects: [
@@ -657,7 +657,7 @@ let chart = [
   ch_1 = {
     parent: parent_n,
     image: "./src/assets/image/Nataliya.jpeg",
-    HTMLclass: 'person-tile',
+    HTMLclass: 'tile',
     additionalInfo: {
       post: 'Manager',
       projects: [
@@ -673,7 +673,7 @@ let chart = [
   ch_2 = {
     parent: parent_n,
     image: "./src/assets/image/Nataliya.jpeg",
-    HTMLclass: 'person-tile',
+    HTMLclass: 'tile',
     additionalInfo: {
       post: 'God',
       projects: [
@@ -690,7 +690,7 @@ let chart = [
   ch_3 = {
     parent: parent_n,
     image: "./src/assets/image/Nataliya.jpeg",
-    HTMLclass: 'person-tile',
+    HTMLclass: 'tile',
     additionalInfo: {
       post: 'God',
       projects: [
@@ -707,7 +707,7 @@ let chart = [
   ch_4 = {
     parent: ch_3,
     image: "./src/assets/im age/Nataliya.jpeg",
-    HTMLclass: 'person-tile',
+    HTMLclass: 'tile',
     additionalInfo: {
       post: 'God',
       projects: [],

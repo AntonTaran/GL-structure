@@ -2,31 +2,9 @@
    display: flex;
    flex-flow: row wrap;
    margin: 0 -1.5625rem 8.8rem;
-}
-
-.tile-wrapper {
-   margin-bottom: 2.2rem;
-   padding: 0 25px;
-}
-
-.tile-image-holder {
-   display: block;
-   width: 80px;
-   height: 80px;
-   margin: 0 auto 15px;
-   border-radius: 50%;
-   overflow: hidden;
    
-   img {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-   }
-   
-   .empty-image-state {
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #999;
+   .tile-wrapper {
+      margin-bottom: 2.2rem;
+      padding: 0 25px;
    }
 }

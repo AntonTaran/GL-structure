@@ -1,282 +1,3 @@
-import '../assets/scss/index.scss';
-
-const persons = [
-  {
-    "name": "Nataliya Siromakha",
-    "par": 'root',
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/55495/profile/NS.jpg?1514899516",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,EngineeringDirector,EngineeringDirector,Engineering",
-      "profileLink": "https://glo.globallogic.com/users/profile/nataliya.siromakha",
-      "projects": 'MTC WFA TestSOP, Sophos',
-    },
-    "text": {
-      "name": "Nataliya Siromakha",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Yevgenii Kolometskyi",
-    "par": "Nataliya Siromakha",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/3549/profile/51725.jpg?1312378925",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Senior Manager,Engineering",
-      "projects": 'LeCroy, Sophos',
-    },
-    "text": {
-      "name": "Yevgenii Kolometskyi",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Igor Rudko",
-    "par": "Nataliya Siromakha",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/31317/profile/Igor_Rudko_(1).jpg?1450094171",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": 'LeCroy, Sophos',
-    },
-    "text": {
-      "name": "Igor Rudko",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Denys Bratchuk",
-    "par": "Nataliya Siromakha",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/70612/profile/denys-smile.jpg?1542817746",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": 'ABC-Expense report solution',
-    },
-    "text": {
-      "name": "Denys Bratchuk",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Viktor Matusov",
-    "par": "Nataliya Siromakha",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/20679/profile/me_wedding0.jpg?1415116319",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": []
-    },
-    "text": {
-      "name": "Viktor Matusov",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Viktor Matusov child",
-    "par": "Viktor Matusov",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/20679/profile/me_wedding0.jpg?1415116319",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Viktor Matusov",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Viktor Matusov child",
-    "par": "Viktor Matusov",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/20679/profile/me_wedding0.jpg?1415116319",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Viktor Matusov",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Viktor Matusov child",
-    "par": "Viktor Matusov",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/20679/profile/me_wedding0.jpg?1415116319",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Viktor Matusov",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Viktor Matusov child",
-    "par": "Viktor Matusov",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/20679/profile/me_wedding0.jpg?1415116319",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Viktor Matusov child",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Iuliia Izonina",
-    "par": "Nataliya Siromakha",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Iuliia Izonina",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Iuliia Izonina child",
-    "par": "Iuliia Izonina",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Iuliia Izonina child",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Iuliia Izonina child",
-    "par": "Iuliia Izonina",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Iuliia Izonina child",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Iuliia Izonina child",
-    "par": "Iuliia Izonina",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": [
-        {
-          "name": "Aero Development",
-          "url": "#"
-        },
-        {
-          "name": " Rimage",
-          "url": "#"
-        }
-      ]
-    },
-    "text": {
-      "name": "Iuliia Izonina child",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Iuliia Izonina child",
-    "par": "Iuliia Izonina",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": [
-        {
-          "name": "Aero Development",
-          "url": "#"
-        },
-        {
-          "name": " Rimage",
-          "url": "#"
-        }
-      ]
-    },
-    "text": {
-      "name": "Iuliia Izonina child",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Iuliia Izonina child",
-    "par": "Iuliia Izonina",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Microsoft - Service Delivery"
-    },
-    "text": {
-      "name": "Iuliia Izonina child",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-  {
-    "name": "Iuliia Izonina child",
-    "par": "Iuliia Izonina",
-    "children": [],
-    "image": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "HTMLclass": "person-tile",
-    collapsed: true,
-    "additionalInfo": {
-      "post": "Director,Engineering",
-      "projects": "Aero Development"
-    },
-    "text": {
-      "name": "Iuliia Izonina child",
-      "nodeAlign": "BOTTOM"
-    }
-  },
-];
 
 const svg1 = document.getElementsByTagName('svg');
 const wrapper = document.querySelector('#collapsable-example');
@@ -331,7 +52,7 @@ let chart_config = {
     levelSeparation: 120,
     siblingSeparation: 50,
     subTeeSeparation: 50,
-//    nodeAlign: 'TOP',
+    nodeAlign: 'CENTER',
     connectors: {
       type: 'step',
       style: {
@@ -587,38 +308,6 @@ tree = new Treant(chart_config);
 
 /*Divisions Section*/
 
-let headsOfDivisions = [{
-  "name": "Inna Dukhota",
-  "avatar": "https://glo-assets.globallogic.com/system/data/23822/profile/402888.jpg?1423785644",
-  "divisionName": "Talent Aquisition Group ",
-  "profileLink": "https://glo.globallogic.com/users/profile/inna.dukhota"
-}, {
-  "name": "Anna Veselova",
-  "avatar": "https://glo-assets.globallogic.com/system/data/65815/profile/IMG_7129.JPG?1534766416",
-  "divisionName": "Resourcing ",
-  "profileLink": "https://glo.globallogic.com/users/profile/anna.veselova"
-}, {
-  "name": "Ellina Medynska ",
-  "avatar": "https://glo-assets.globallogic.com/system/data/48745/profile/IMG_9350.jpg?1498201664",
-  "divisionName": "PR & Marketing",
-  "profileLink": "https://glo.globallogic.com/users/profile/ellina.medynska"
-}, {
-  "name": "Sergii Shmatko",
-  "avatar": "https://glo-assets.globallogic.com/system/data/60956/profile/Serhii_Shmatko.jpg?1526999529",
-  "divisionName": "IT Infrastructure",
-  "profileLink": "https://glo.globallogic.com/users/profile/serhii.shmatko"
-}, {
-  "name": "Vladyslav Domin",
-  "avatar": "https://glo-assets.globallogic.com/system/data/51449/profile/Vladyslav_Domin.jpg?1504697687",
-  "divisionName": "Employee Services ",
-  "profileLink": "https://glo.globallogic.com/users/profile/vladyslav.domin"
-}, {
-  "name": "Nataliya Osipenko",
-  "avatar": "https://glo-assets.globallogic.com/system/data/41292/profile/IMG_9556.jpg?1478695541",
-  "divisionName": "Process Management (PMG)",
-  "profileLink": "https://glo.globallogic.com/users/profile/nataliia.osypenko"
-}, {"name": "TBD", "avatar": "", "divisionName": "Business Partner ", "profileLink": ""}];
-
 class FunctionalDivisionsHeads {
   constructor(divisionsInfo) {
     this.divisionsInfo = divisionsInfo;
@@ -633,17 +322,15 @@ class FunctionalDivisionsHeads {
 
       tile.className = 'divisions_heads tile-wrapper';
       tile.innerHTML = `
-         <div class="person-tile division-head-tile">
-           <a href="${item.profileLink}" target="_blank" class="profile-link">
-             <div class="tile-image-holder division-head__image-holder">
-                  ${this.onCheckImage(item)}
-               </div>
-              <p class="node-name division-head__name">${item.name}</p>
-              <p class="node-name division-head__description">${item.divisionName}</p>
-            </a>
-         </div>`;
+         <a href="${item.profileLink}" target="_blank" class="tile tile--small tile--framed division-head-tile">
+           <div class="tile-image-holder division-head__image-holder">
+                ${this.onCheckImage(item)}
+             </div>
+            <p class="tile-name">${item.name}</p>
+            <p class="tile-desc">${item.divisionName}</p>
+         </a>`;
 
-      this.divisionsInfo.DIVISIONS_HEADS_CONTAINER[0].appendChild(tile);
+      this.divisionsInfo.SECTION_CONTAINER[0].appendChild(tile);
     });
   }
 
@@ -651,14 +338,130 @@ class FunctionalDivisionsHeads {
     if (item.avatar) {
       return `<img src=${item.avatar} alt=${item.name}>`
     } else {
-      return `<span class="empty-image-state"><span>`
+      return `<img src='https://glo-assets.globallogic.com/system/data/1555/orange_theme/profile/avatar.jpg?1312376270' alt=${item.name}>`
     }
 
   }
 }
 
 new FunctionalDivisionsHeads({
-  DIVISIONS_HEADS_CONTAINER: document.getElementsByClassName('division-heads'),
-  DIVISIONS_HEADS: headsOfDivisions,
+  SECTION_CONTAINER: document.getElementsByClassName('division-heads'),
+});
+
+class StrategicFocusArea {
+  constructor(StrategicFocusAreaInfo) {
+    this.StrategicFocusAreaInfo = StrategicFocusAreaInfo;
+
+    this.setDataTile();
+  }
+
+  setDataTile() {
+    focusAreasPersons.forEach((item) => {
+      const tile = document.createElement('div');
+
+      tile.className = 'tile-wrapper';
+      tile.innerHTML = `
+        <a href="${item.profileLink}" target="_blank" class="tile tile--big">
+          <div class="tile-image-holder united-tiles-section__image-holder">
+             ${this.onCheckImage(item)}
+          </div>
+          <p class="tile-desc">${item.functionalArea}</p>
+          <p class="tile-name">${item.name}</p>
+        </a>`;
+
+      this.StrategicFocusAreaInfo.SECTION_CONTAINER[0].appendChild(tile);
+    });
+  }
+
+  onCheckImage(item) {
+    if (item.avatar) {
+      return `<img src=${item.avatar} alt=${item.name}>`
+    } else {
+      return `<img src='https://glo-assets.globallogic.com/system/data/1555/orange_theme/profile/avatar.jpg?1312376270' alt=${item.name}>`
+    }
+
+  }
+}
+
+new StrategicFocusArea({
+  SECTION_CONTAINER: document.getElementsByClassName('strategic-focus-area__tiles-holder'),
+});
+
+class TechnologyList {
+  constructor(technologyLeadsInfo) {
+    this.technologyLeadsInfo = technologyLeadsInfo;
+
+    this.setDataTile();
+  }
+
+  setDataTile() {
+    technologyLeads.forEach((item) => {
+      const tile = document.createElement('div');
+
+      tile.className = 'tile-wrapper';
+      tile.innerHTML = `
+        <a href="${item.profileLink}" target="_blank" class="tile tile--big">
+          <div class="tile-image-holder united-tiles-section__image-holder">
+             ${this.onCheckImage(item)}
+          </div>
+          <p class="tile-desc">${item.technology}</p>
+          <p class="tile-name">${item.name}</p>
+        </a>`;
+
+      this.technologyLeadsInfo.SECTION_CONTAINER[0].appendChild(tile);
+    });
+  }
+
+  onCheckImage(item) {
+    if (item.avatar) {
+      return `<img src=${item.avatar} alt=${item.name}>`
+    } else {
+      return `<img src='https://glo-assets.globallogic.com/system/data/1555/orange_theme/profile/avatar.jpg?1312376270' alt=${item.name}>`
+    }
+
+  }
+}
+
+new TechnologyList({
+  SECTION_CONTAINER: document.getElementsByClassName('technology-leads__tiles-holder'),
+});
+
+class PracticesLeads {
+  constructor(practicesLeads) {
+    this.practicesLeads = practicesLeads;
+
+    this.setDataTile();
+  }
+
+  setDataTile() {
+    practicesLeads.forEach((item) => {
+      const tile = document.createElement('div');
+
+      tile.className = 'tile-wrapper';
+      tile.innerHTML = `
+        <a href="${item.profileLink}" target="_blank" class="tile tile--big">
+          <div class="tile-image-holder united-tiles-section__image-holder">
+             ${this.onCheckImage(item)}
+          </div>
+          <p class="tile-desc">${item.technology}</p>
+          <p class="tile-name">${item.name}</p>
+        </a>`;
+
+      this.practicesLeads.SECTION_CONTAINER[0].appendChild(tile);
+    });
+  }
+
+  onCheckImage(item) {
+    if (item.avatar) {
+      return `<img src=${item.avatar} alt=${item.name}>`
+    } else {
+      return `<img src='https://glo-assets.globallogic.com/system/data/1555/orange_theme/profile/avatar.jpg?1312376270' alt=${item.name}>`
+    }
+
+  }
+}
+
+new PracticesLeads({
+  SECTION_CONTAINER: document.getElementsByClassName('practices-leads__tiles-holder'),
 });
 
