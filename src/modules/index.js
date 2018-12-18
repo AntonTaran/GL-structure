@@ -1,5 +1,37 @@
 import '../assets/scss/index.scss';
 
+class PageNavigation {
+  constructor(info) {
+    this.addEventToLink(info.TOP_NAVIGATION);
+    this.addEventToScrollButton(info.SCROLL_BUTTON);
+  }
+
+  addEventToLink(link) {
+    link.addEventListener('click', (event) => {
+      if (Array.from(event.target.classList).indexOf('nav-link') !== -1) {
+
+        $('html, body').animate({
+          scrollTop: $('#' + event.target.dataset.attr).offset().top - 40
+        }, 200);
+      }
+    })
+  }
+
+  addEventToScrollButton(link) {
+    link.addEventListener('click', () => {
+      $('html, body').animate({
+        scrollTop: $('body').offset().top
+      }, 200);
+    })
+  }
+}
+
+new PageNavigation({
+  TOP_NAVIGATION: document.querySelector('.top-navigation-menu'),
+  SCROLL_BUTTON: document.querySelector('.scroll-top-btn'),
+});
+
+
 const persons = [
   {
     "name": "Nataliya Siromakha",
@@ -327,10 +359,10 @@ let chart_config = {
     node: {
       collapsable: true
     },
-    levelSeparation: 120,
-    siblingSeparation: 50,
-    subTeeSeparation: 50,
-    nodeAlign: 'CENTER',
+    levelSeparation: 30,
+    siblingSeparation: 30,
+    subTeeSeparation: 30,
+    nodeAlign: 'TOP',
     connectors: {
       type: 'step',
       style: {
@@ -387,6 +419,7 @@ class Modal {
   }
 
   openModal() {
+    console.log(JSON.parse(localStorage.some));
     this.modalInfo.MODAL_HTML[0].classList.add('additional-info-modal--open');
     this.modalInfo.MODAL_OVERLAY[0].classList.add('modal-overlay--open');
 //    this.modalInfo.MODAL_HTML[0].style.top = `${event.pageY - 348}px `;
@@ -584,47 +617,196 @@ modalOverlay.addEventListener('click', ((event) => {
 
 tree = new Treant(chart_config);
 
-/*Divisions Section*/
-
-let headsOfDivisions = [
+const headsOfDivisions = [
   {
-    "name": "Inna Dukhota",
+    "title": "Inna Dukhota",
     "avatar": "https://glo-assets.globallogic.com/system/data/23822/profile/402888.jpg?1423785644",
-    "divisionName": "Talent Aquisition Group ",
+    "subtitle": "Talent Aquisition Group ",
     "profileLink": "https://glo.globallogic.com/users/profile/inna.dukhota"
   }, {
-    "name": "Anna Veselova",
+    "title": "Anna Veselova",
     "avatar": "https://glo-assets.globallogic.com/system/data/65815/profile/IMG_7129.JPG?1534766416",
-    "divisionName": "Resourcing ",
+    "subtitle": "Resourcing ",
     "profileLink": "https://glo.globallogic.com/users/profile/anna.veselova"
   }, {
-    "name": "Ellina Medynska ",
+    "title": "Ellina Medynska ",
     "avatar": "https://glo-assets.globallogic.com/system/data/48745/profile/IMG_9350.jpg?1498201664",
-    "divisionName": "PR & Marketing",
+    "subtitle": "PR & Marketing",
     "profileLink": "https://glo.globallogic.com/users/profile/ellina.medynska"
   }, {
-    "name": "Sergii Shmatko",
+    "title": "Sergii Shmatko",
     "avatar": "https://glo-assets.globallogic.com/system/data/60956/profile/Serhii_Shmatko.jpg?1526999529",
-    "divisionName": "IT Infrastructure",
+    "subtitle": "IT Infrastructure",
     "profileLink": "https://glo.globallogic.com/users/profile/serhii.shmatko"
   }, {
-    "name": "Vladyslav Domin",
+    "title": "Vladyslav Domin",
     "avatar": "https://glo-assets.globallogic.com/system/data/51449/profile/Vladyslav_Domin.jpg?1504697687",
-    "divisionName": "Employee Services ",
+    "subtitle": "Employee Services ",
     "profileLink": "https://glo.globallogic.com/users/profile/vladyslav.domin"
   }, {
-    "name": "Nataliya Osipenko",
+    "title": "Nataliya Osipenko",
     "avatar": "https://glo-assets.globallogic.com/system/data/41292/profile/IMG_9556.jpg?1478695541",
-    "divisionName": "Process Management (PMG)",
+    "subtitle": "Process Management (PMG)",
     "profileLink": "https://glo.globallogic.com/users/profile/nataliia.osypenko"
-  }, {"name": "TBD", "avatar": "", "divisionName": "Business Partner ", "profileLink": ""}
+  }, {"title": "TBD", "avatar": "", "subtitle": "Business Partner ", "profileLink": ""}
+];
+const focusAreasPersons = [
+  {
+    "title": "Iuliia Izonina",
+    "position": "Director, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
+    "profileLink": "https://glo.globallogic.com/users/profile/iuliia.izonina",
+    "subtitle": "Center Scalability "
+  },
+  {
+    "title": "Oleksandr Lanin",
+    "position": "Senior Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/70991/profile/alexlain-gl-2018.jpg?1543590636",
+    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.lanin",
+    "subtitle": "Business Development "
+  },
+  {
+    "title": "Nataliya Siromakha",
+    "position": "Kharkiv Location Head",
+    "avatar": "https://glo-assets.globallogic.com/system/data/55495/profile/NS.jpg?1514899516",
+    "profileLink": "https://glo.globallogic.com/users/profile/nataliya.siromakha",
+    "subtitle": "Practices Development "
+  },
+  {
+    "title": "Ellina Medynska ",
+    "position": "Senior Specialist, Marketing",
+    "avatar": "https://glo-assets.globallogic.com/system/data/48745/profile/IMG_9350.jpg?1498201664",
+    "profileLink": "https://glo.globallogic.com/users/profile/ellina.medynska",
+    "subtitle": "PR & Marketing"
+  },
+  {
+    "title": "Inna Dukhota",
+    "position": "Senior Manager, People Development ",
+    "avatar": "https://glo-assets.globallogic.com/system/data/23822/profile/402888.jpg?1423785644",
+    "profileLink": "https://glo.globallogic.com/users/profile/inna.dukhota",
+    "subtitle": "TAG Efficiency"
+  },
+  {
+    "title": "axcacs",
+    "position": "Senior Manager, People Development ",
+    "avatar": "https://glo-assets.globallogic.com/system/data/23822/profile/402888.jpg?1423785644",
+    "profileLink": "https://glo.globallogic.com/users/profile/inna.dukhota",
+    "subtitle": "TAG Efficiency"
+  }
+];
+const technologyLeads = [
+  {
+    "title": "Oleksandr Lanin",
+    "position": "Senior Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/70991/profile/alexlain-gl-2018.jpg?1543590636",
+    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.lanin",
+    "subtitle": ".NET "
+  },
+  {
+    "title": "Olena Yelisheva",
+    "position": "Project Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/12765/profile/IMG_0684_21.jpg?1364295028",
+    "profileLink": "https://glo.globallogic.com/users/profile/olena.ielysheva",
+    "subtitle": "QA Automation "
+  },
+  {
+    "title": "Oleksandr Rybtsov",
+    "position": "Senior Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/70168/profile/Picture.png?1542113014",
+    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.rybtsov",
+    "subtitle": "Java "
+  },
+  {
+    "title": "Denys Bratchuk",
+    "position": "Director, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/70612/profile/denys-smile.jpg?1542817746",
+    "profileLink": "https://glo.globallogic.com/users/profile/denys.bratchuk",
+    "subtitle": "JavaScript "
+  },
+  {
+    "title": "Oleksandr Svideniuk",
+    "position": "Senior Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/55556/profile/ava_2017.jpg?1514971986",
+    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.svideniuk",
+    "subtitle": "C++"
+  }
+];
+const practicesLeads = [
+  {
+    "title": "Andrii Gnennyi",
+    "position": "Principal, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/40620/profile/AGN_Square.jpg?1477057620",
+    "profileLink": "https://glo.globallogic.com/users/profile/andriy.gnennyy",
+    "subtitle": "Cloud"
+  },
+  {
+    "title": "Andrii Antilikatorov",
+    "position": "Consultant, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/16714/profile/Antilikatorov.png?1392109625",
+    "profileLink": "https://glo.globallogic.com/users/profile/Andrii.Antilikatorov",
+    "subtitle": "Machine Learning/AI"
+  },
+  {
+    "title": "Igor Manzhos",
+    "position": "Senior Consultant, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/67610/profile/viber_image.jpg?1537615575",
+    "profileLink": "https://glo.globallogic.com/users/profile/igor.manzhos",
+    "subtitle": "Machine Learning/AI"
+  },
+  {
+    "title": "Yevhen Napriaglo",
+    "position": "Senior Solution Architect, Technology",
+    "avatar": "https://glo-assets.globallogic.com/system/data/56844/profile/1.png?1517996955",
+    "profileLink": "https://glo.globallogic.com/users/profile/yevhen.napriahlo",
+    "subtitle": "Architecture/Digital Transformation"
+  },
+  {
+    "title": "Yevgenii Kolometskyi",
+    "position": "Senior Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/3549/profile/51725.jpg?1312378925",
+    "profileLink": "https://glo.globallogic.com/users/profile/y.kolometskyi",
+    "subtitle": "Automotive/Embedded"
+  },
+  {
+    "title": "Oleksandr Adamov",
+    "position": "Consultant, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/57013/profile/me_no_ransomware.jpg?1518506599",
+    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.adamov",
+    "subtitle": "Security "
+  },
+  {
+    "title": "Vitaliy Tilinskiy",
+    "position": "Project Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/54574/profile/Vitaliy.jpg?1512511121",
+    "profileLink": "https://glo.globallogic.com/users/profile/vitaliy.tilinskiy",
+    "subtitle": "DevOps"
+  },
+  {
+    "title": "Oleksandra Skybina",
+    "position": "Associate Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/3626/profile/52101.jpg?1312378980",
+    "profileLink": "https://glo.globallogic.com/users/profile/Oleksandra.Skybina",
+    "subtitle": "Agile"
+  },
+  {
+    "title": "Dmytro Dvornichenko",
+    "position": "Senior Designer, Usability & Design",
+    "avatar": "https://glo-assets.globallogic.com/system/data/60298/profile/379788_2699761009461_1378935210_n.jpg?1525948393",
+    "profileLink": "https://glo.globallogic.com/users/profile/dmytro.dvornichenko",
+    "subtitle": "UX/UI"
+  },
+  {
+    "title": "Oleksandr Furdylo",
+    "position": "Project Manager, Engineering",
+    "avatar": "https://glo-assets.globallogic.com/system/data/3401/profile/51782.jpg?1312378817",
+    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.furdylo",
+    "subtitle": "Mobility "
+  }
 ];
 
 class FunctionalDivisionsHeads {
   constructor(divisionsInfo) {
     this.divisionsInfo = divisionsInfo;
-
-    console.log(this.divisionsInfo);
     this.setDataTile();
   }
 
@@ -638,8 +820,8 @@ class FunctionalDivisionsHeads {
            <div class="tile-image-holder division-head__image-holder">
                 ${this.onCheckImage(item)}
              </div>
-            <p class="tile-name">${item.name}</p>
-            <p class="tile-desc">${item.divisionName}</p>
+            <p class="tile-name">${item.title}</p>
+            <p class="tile-desc">${item.subtitle}</p>
          </a>`;
 
       this.divisionsInfo.SECTION_CONTAINER[0].appendChild(tile);
@@ -660,279 +842,55 @@ new FunctionalDivisionsHeads({
   SECTION_CONTAINER: document.getElementsByClassName('division-heads'),
 });
 
-let focusAreasPersons = [
-  {
-    "name": "Iuliia Izonina",
-    "position": "Director, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/12081/profile/IMG_0649.jpg?1360936727",
-    "profileLink": "https://glo.globallogic.com/users/profile/iuliia.izonina",
-    "functionalArea": "Center Scalability "
-  },
-  {
-    "name": "Oleksandr Lanin",
-    "position": "Senior Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/70991/profile/alexlain-gl-2018.jpg?1543590636",
-    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.lanin",
-    "functionalArea": "Business Development "
-  },
-  {
-    "name": "Nataliya Siromakha",
-    "position": "Kharkiv Location Head",
-    "avatar": "https://glo-assets.globallogic.com/system/data/55495/profile/NS.jpg?1514899516",
-    "profileLink": "https://glo.globallogic.com/users/profile/nataliya.siromakha",
-    "functionalArea": "Practices Development "
-  },
-  {
-    "name": "Ellina Medynska ",
-    "position": "Senior Specialist, Marketing",
-    "avatar": "https://glo-assets.globallogic.com/system/data/48745/profile/IMG_9350.jpg?1498201664",
-    "profileLink": "https://glo.globallogic.com/users/profile/ellina.medynska",
-    "functionalArea": "PR & Marketing"
-  },
-  {
-    "name": "Inna Dukhota",
-    "position": "Senior Manager, People Development ",
-    "avatar": "https://glo-assets.globallogic.com/system/data/23822/profile/402888.jpg?1423785644",
-    "profileLink": "https://glo.globallogic.com/users/profile/inna.dukhota",
-    "functionalArea": "TAG Efficiency"
-  },
-  {
-    "name": "axcacs",
-    "position": "Senior Manager, People Development ",
-    "avatar": "https://glo-assets.globallogic.com/system/data/23822/profile/402888.jpg?1423785644",
-    "profileLink": "https://glo.globallogic.com/users/profile/inna.dukhota",
-    "functionalArea": "TAG Efficiency"
-  }
-]
-
-
-class StrategicFocusArea {
-  constructor(StrategicFocusAreaInfo) {
-    this.StrategicFocusAreaInfo = StrategicFocusAreaInfo;
-
+class CommonClass {
+  constructor(info) {
+    this.info = info;
     this.setDataTile();
   }
 
   setDataTile() {
-    focusAreasPersons.forEach((item) => {
+    this.info.data.forEach((item) => {
       const tile = document.createElement('div');
 
-      tile.className = 'tile-wrapper';
+      tile.className = this.info.classEl;
       tile.innerHTML = `
         <a href="${item.profileLink}" target="_blank" class="tile tile--big">
           <div class="tile-image-holder united-tiles-section__image-holder">
-             ${this.onCheckImage(item)}
+             ${CommonClass.onCheckImage(item)}
           </div>
-          <p class="tile-desc">${item.functionalArea}</p>
-          <p class="tile-name">${item.name}</p>
+          <p class="tile-desc">${item.subtitle}</p>
+          <p class="tile-name">${item.title}</p>
         </a>`;
 
-      this.StrategicFocusAreaInfo.SECTION_CONTAINER[0].appendChild(tile);
+      this.info.SECTION_CONTAINER[0].appendChild(tile);
     });
   }
 
-  onCheckImage(item) {
+  static onCheckImage(item) {
     if (item.avatar) {
       return `<img src=${item.avatar} alt=${item.name}>`
     } else {
       return `<img src='https://glo-assets.globallogic.com/system/data/1555/orange_theme/profile/avatar.jpg?1312376270' alt=${item.name}>`
     }
-
   }
 }
 
-new StrategicFocusArea({
+new CommonClass({
   SECTION_CONTAINER: document.getElementsByClassName('strategic-focus-area__tiles-holder'),
+  classEl: 'tile-wrapper',
+  data: focusAreasPersons
 });
 
-let technologyLeads = [
-  {
-    "name": "Oleksandr Lanin",
-    "position": "Senior Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/70991/profile/alexlain-gl-2018.jpg?1543590636",
-    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.lanin",
-    "technology": ".NET "
-  },
-  {
-    "name": "Olena Yelisheva",
-    "position": "Project Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/12765/profile/IMG_0684_21.jpg?1364295028",
-    "profileLink": "https://glo.globallogic.com/users/profile/olena.ielysheva",
-    "technology": "QA Automation "
-  },
-  {
-    "name": "Oleksandr Rybtsov",
-    "position": "Senior Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/70168/profile/Picture.png?1542113014",
-    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.rybtsov",
-    "technology": "Java "
-  },
-  {
-    "name": "Denys Bratchuk",
-    "position": "Director, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/70612/profile/denys-smile.jpg?1542817746",
-    "profileLink": "https://glo.globallogic.com/users/profile/denys.bratchuk",
-    "technology": "JavaScript "
-  },
-  {
-    "name": "Oleksandr Svideniuk",
-    "position": "Senior Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/55556/profile/ava_2017.jpg?1514971986",
-    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.svideniuk",
-    "technology": "C++"
-  }
-];
-
-class TechnologyList {
-  constructor(technologyLeadsInfo) {
-    this.technologyLeadsInfo = technologyLeadsInfo;
-
-    this.setDataTile();
-  }
-
-  setDataTile() {
-    technologyLeads.forEach((item) => {
-      const tile = document.createElement('div');
-
-      tile.className = 'tile-wrapper';
-      tile.innerHTML = `
-        <a href="${item.profileLink}" target="_blank" class="tile tile--big">
-          <div class="tile-image-holder united-tiles-section__image-holder">
-             ${this.onCheckImage(item)}
-          </div>
-          <p class="tile-desc">${item.technology}</p>
-          <p class="tile-name">${item.name}</p>
-        </a>`;
-
-      this.technologyLeadsInfo.SECTION_CONTAINER[0].appendChild(tile);
-    });
-  }
-
-  onCheckImage(item) {
-    if (item.avatar) {
-      return `<img src=${item.avatar} alt=${item.name}>`
-    } else {
-      return `<img src='https://glo-assets.globallogic.com/system/data/1555/orange_theme/profile/avatar.jpg?1312376270' alt=${item.name}>`
-    }
-
-  }
-}
-
-new TechnologyList({
+new CommonClass({
   SECTION_CONTAINER: document.getElementsByClassName('technology-leads__tiles-holder'),
+  classEl: 'tile-wrapper',
+  data: technologyLeads
 });
 
-const practicesLeads = [
-  {
-    "name": "Andrii Gnennyi",
-    "position": "Principal, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/40620/profile/AGN_Square.jpg?1477057620",
-    "profileLink": "https://glo.globallogic.com/users/profile/andriy.gnennyy",
-    "technology": "Cloud"
-  },
-  {
-    "name": "Andrii Antilikatorov",
-    "position": "Consultant, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/16714/profile/Antilikatorov.png?1392109625",
-    "profileLink": "https://glo.globallogic.com/users/profile/Andrii.Antilikatorov",
-    "technology": "Machine Learning/AI"
-  },
-  {
-    "name": "Igor Manzhos",
-    "position": "Senior Consultant, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/67610/profile/viber_image.jpg?1537615575",
-    "profileLink": "https://glo.globallogic.com/users/profile/igor.manzhos",
-    "technology": "Machine Learning/AI"
-  },
-  {
-    "name": "Yevhen Napriaglo",
-    "position": "Senior Solution Architect, Technology",
-    "avatar": "https://glo-assets.globallogic.com/system/data/56844/profile/1.png?1517996955",
-    "profileLink": "https://glo.globallogic.com/users/profile/yevhen.napriahlo",
-    "technology": "Architecture/Digital Transformation"
-  },
-  {
-    "name": "Yevgenii Kolometskyi",
-    "position": "Senior Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/3549/profile/51725.jpg?1312378925",
-    "profileLink": "https://glo.globallogic.com/users/profile/y.kolometskyi",
-    "technology": "Automotive/Embedded"
-  },
-  {
-    "name": "Oleksandr Adamov",
-    "position": "Consultant, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/57013/profile/me_no_ransomware.jpg?1518506599",
-    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.adamov",
-    "technology": "Security "
-  },
-  {
-    "name": "Vitaliy Tilinskiy",
-    "position": "Project Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/54574/profile/Vitaliy.jpg?1512511121",
-    "profileLink": "https://glo.globallogic.com/users/profile/vitaliy.tilinskiy",
-    "technology": "DevOps"
-  },
-  {
-    "name": "Oleksandra Skybina",
-    "position": "Associate Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/3626/profile/52101.jpg?1312378980",
-    "profileLink": "https://glo.globallogic.com/users/profile/Oleksandra.Skybina",
-    "technology": "Agile"
-  },
-  {
-    "name": "Dmytro Dvornichenko",
-    "position": "Senior Designer, Usability & Design",
-    "avatar": "https://glo-assets.globallogic.com/system/data/60298/profile/379788_2699761009461_1378935210_n.jpg?1525948393",
-    "profileLink": "https://glo.globallogic.com/users/profile/dmytro.dvornichenko",
-    "technology": "UX/UI"
-  },
-  {
-    "name": "Oleksandr Furdylo",
-    "position": "Project Manager, Engineering",
-    "avatar": "https://glo-assets.globallogic.com/system/data/3401/profile/51782.jpg?1312378817",
-    "profileLink": "https://glo.globallogic.com/users/profile/oleksandr.furdylo",
-    "technology": "Mobility "
-  }
-];
-
-
-
-class PracticesLeads {
-  constructor(practicesLeads) {
-    this.practicesLeads = practicesLeads;
-
-    this.setDataTile();
-  }
-
-  setDataTile() {
-    practicesLeads.forEach((item) => {
-      const tile = document.createElement('div');
-
-      tile.className = 'tile-wrapper';
-      tile.innerHTML = `
-        <a href="${item.profileLink}" target="_blank" class="tile tile--big">
-          <div class="tile-image-holder united-tiles-section__image-holder">
-             ${this.onCheckImage(item)}
-          </div>
-          <p class="tile-desc">${item.technology}</p>
-          <p class="tile-name">${item.name}</p>
-        </a>`;
-
-      this.practicesLeads.SECTION_CONTAINER[0].appendChild(tile);
-    });
-  }
-
-  onCheckImage(item) {
-    if (item.avatar) {
-      return `<img src=${item.avatar} alt=${item.name}>`
-    } else {
-      return `<img src='https://glo-assets.globallogic.com/system/data/1555/orange_theme/profile/avatar.jpg?1312376270' alt=${item.name}>`
-    }
-
-  }
-}
-
-new PracticesLeads({
+new CommonClass({
   SECTION_CONTAINER: document.getElementsByClassName('practices-leads__tiles-holder'),
+  classEl: 'tile-wrapper',
+  data: practicesLeads
 });
+
 

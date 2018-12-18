@@ -3,10 +3,11 @@
 @import "base";
 @import "main";
 @import "shared";
-@import "chart";
+@import "modules/chart";
 @import "modal";
 
-@import "single-tiles-section";
-@import "united-tiles-section";
-@import "division-heads";
+@import "modules/header";
+@import "modules/single-tiles-section";
+@import "modules/united-tiles-section";
+@import "modules/division-heads";
 

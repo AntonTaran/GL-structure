@@ -54,6 +54,7 @@
       padding: 30px .7rem 1rem;
       text-align: center;
       border-radius: 10px;
+      background-color: transparentize(#eff1f5, .5);
       cursor: pointer;
    
       .tile-image-holder {
@@ -125,5 +126,26 @@
          margin: 0 auto 15px;
          border-radius: 50%;
       }
+   }
+}
+
+.scroll-top-btn {
+   position: fixed;
+   right: 50px;
+   bottom: 50px;
+   width: 60px;
+   height: 60px;
+   background-color: #fff;
+   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.3);
+   cursor: pointer;
+   border-radius: 50%;
+   transition: box-shadow .2s ease;
+   
+   &:hover {
+      box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.4);
+   }
+   
+   &:focus {
+      box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.8);
    }
 }
