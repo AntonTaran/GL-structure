@@ -723,4 +723,26 @@ let chart = [
 let chart_config = chart;
 chart_config.map((el, ind) => el.HTMLid = ind);
 
+class Observable {
+  next(data) {
+    this.state = data;
+  }
+
+  subscribe(fn) {
+    return this.state;
+//    let b = fn;
+//    return b
+  }
+}
+
+const observable = new Observable();
+
+observable.subscribe((data) => {
+  console.log(data);
+});
+
+observable.next(5);
+observable.next(20);
+observable.next(44);
+
 export {chart_config};

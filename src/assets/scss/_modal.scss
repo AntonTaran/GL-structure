@@ -20,9 +20,9 @@ $footer-height: 70px;
 
 .additional-info-modal {
    position: fixed;
-   top: 50vh;
+   //top: 50vh;
    left: 50%;
-   transform: translate(-50%, -20%);
+   transform: translateY(-50%);
    width: 630px;
    min-height: 348px;
    padding-bottom: $footer-height;
@@ -35,7 +35,7 @@ $footer-height: 70px;
    
    &--open {
       opacity: 1;
-      transform: translate(-50%, -50%);
+      //transform: translate(-50%, -50%);
       pointer-events: auto;
       transition: opacity .2s ease, transform .1s ease;
    }

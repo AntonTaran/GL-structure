@@ -11,7 +11,7 @@ class PageNavigation {
       if (Array.from(event.target.classList).indexOf('nav-link') !== -1) {
 
         $('html, body').animate({
-          scrollTop: $('#' + event.target.dataset.attr).offset().top
+          scrollTop: $('#' + event.target.dataset.attr).offset().top - 40
         }, 200);
       }
     })
@@ -30,7 +30,6 @@ class PageNavigation {
 //  TOP_NAVIGATION: document.querySelector('.top-navigation-menu'),
 //  SCROLL_BUTTON: document.querySelector('.scroll-top-btn'),
 //});
-
 
 const persons = [
   {
@@ -404,6 +403,17 @@ class Modal {
   constructor(modalInfo) {
     this.modalInfo = modalInfo;
     this.addCancelBtnEventListener();
+
+    document.body.addEventListener('click', (e) => {
+      console.log(screen);
+      console.log(window.scroll());
+      console.log(window.scroll);
+      console.log(window.outerHeight);
+      console.log(window.pageYOffset);
+      console.log(event.offsetY);
+      console.log(event);
+      console.log(window);
+    })
   }
 
   addCancelBtnEventListener() {
@@ -413,14 +423,20 @@ class Modal {
   }
 
   onPersonTileClick(selectedElement, event) {
-    this.openModal();
+    this.openModal(event);
     this.updateModalContent(selectedElement);
     this.setProfileLinkToModalBtn(selectedElement);
   }
 
-  openModal() {
-    console.log(JSON.parse(localStorage.some));
+  setModalPosition(event) {
+    this.modalInfo.MODAL_HTML[0].style.top = ((window.innerHeight - 350) / 2) + "px";
+//    return event.offsetY + 350;
+  }
+
+  openModal(event) {
+    this.setModalPosition(event);
     this.modalInfo.MODAL_HTML[0].classList.add('additional-info-modal--open');
+//    this.modalInfo.MODAL_HTML[0].style.top = `${this.setModalPosition(event)}px `;
     this.modalInfo.MODAL_OVERLAY[0].classList.add('modal-overlay--open');
 //    this.modalInfo.MODAL_HTML[0].style.top = `${event.pageY - 348}px `;
 //    console.log(event);
@@ -456,6 +472,10 @@ class Modal {
   closeModal() {
     this.modalInfo.MODAL_HTML[0].classList.remove('additional-info-modal--open');
     this.modalInfo.MODAL_OVERLAY[0].classList.remove('modal-overlay--open');
+
+    this.modalInfo.MODAL_HTML[0].removeAttribute("style");
+    this.modalInfo.MODAL_HTML[0].removeAttribute("style");
+
   }
 
   setProfileLinkToModalBtn(selectedElement) {
